@@ -281,7 +281,7 @@ def timegan (ori_data, parameters):
       _, step_d_loss = sess.run([D_solver, D_loss], feed_dict={X: X_mb, T: T_mb, Z: Z_mb})
         
     # Print multiple checkpoints
-    if itt % 1000 == 0:
+    if itt % 250 == 0:
       print('step: '+ str(itt) + '/' + str(iterations) + 
             ', d_loss: ' + str(np.round(step_d_loss,4)) + 
             ', g_loss_u: ' + str(np.round(step_g_loss_u,4)) + 

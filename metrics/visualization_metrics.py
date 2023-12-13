@@ -21,9 +21,10 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import numpy as np
+from datetime import datetime
 
    
-def visualization (ori_data, generated_data, analysis):
+def visualization (ori_data, generated_data, analysis, plot_synthetic=True):
   """Using PCA or tSNE for generated and original data visualization.
   
   Args:
@@ -31,6 +32,10 @@ def visualization (ori_data, generated_data, analysis):
     - generated_data: generated synthetic data
     - analysis: tsne or pca
   """  
+  # checks whether to plot only the first parameter
+  if not plot_synthetic:
+    generated_data = np.zeros_like(ori_data)
+
   # Analysis sample size (for faster computation)
   anal_sample_no = min([1000, len(ori_data)])
   idx = np.random.permutation(len(ori_data))[:anal_sample_no]
@@ -68,13 +73,19 @@ def visualization (ori_data, generated_data, analysis):
     f, ax = plt.subplots(1)    
     plt.scatter(pca_results[:,0], pca_results[:,1],
                 c = colors[:anal_sample_no], alpha = 0.2, label = "Original")
-    plt.scatter(pca_hat_results[:,0], pca_hat_results[:,1], 
-                c = colors[anal_sample_no:], alpha = 0.2, label = "Synthetic")
+    if plot_synthetic:
+      plt.scatter(pca_hat_results[:,0], pca_hat_results[:,1], 
+                  c = colors[anal_sample_no:], alpha = 0.2, label = "Synthetic")
   
     ax.legend()  
     plt.title('PCA plot')
     plt.xlabel('x-pca')
     plt.ylabel('y_pca')
+
+    # Saving the plot with date and time in the filename
+    current_datetime = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"plots/{current_datetime}_PCA_plot.png"
+    plt.savefig(filename)
     plt.show()
     
   elif analysis == 'tsne':
@@ -83,7 +94,7 @@ def visualization (ori_data, generated_data, analysis):
     prep_data_final = np.concatenate((prep_data, prep_data_hat), axis = 0)
     
     # TSNE anlaysis
-    tsne = TSNE(n_components = 2, verbose = 1, perplexity = 40, n_iter = 300)
+    tsne = TSNE(n_components = 2, verbose = 1, perplexity = 25, n_iter = 10000, learning_rate=1000)
     tsne_results = tsne.fit_transform(prep_data_final)
       
     # Plotting
@@ -91,12 +102,18 @@ def visualization (ori_data, generated_data, analysis):
       
     plt.scatter(tsne_results[:anal_sample_no,0], tsne_results[:anal_sample_no,1], 
                 c = colors[:anal_sample_no], alpha = 0.2, label = "Original")
-    plt.scatter(tsne_results[anal_sample_no:,0], tsne_results[anal_sample_no:,1], 
-                c = colors[anal_sample_no:], alpha = 0.2, label = "Synthetic")
-  
+    if plot_synthetic:
+      plt.scatter(tsne_results[anal_sample_no:,0], tsne_results[anal_sample_no:,1], 
+                  c = colors[anal_sample_no:], alpha = 0.2, label = "Synthetic")
+    
     ax.legend()
       
     plt.title('t-SNE plot')
     plt.xlabel('x-tsne')
     plt.ylabel('y_tsne')
+
+    # Saving the plot with date and time in the filename
+    current_datetime = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"plots/{current_datetime}_t-SNE_plot.png"
+    plt.savefig(filename)
     plt.show()    

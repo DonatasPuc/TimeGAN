@@ -22,6 +22,8 @@ data_loading.py
 
 ## Necessary Packages
 import numpy as np
+import pandas as pd
+import scipy.io
 
 
 def MinMaxScaler(data):
@@ -76,24 +78,72 @@ def sine_data_generation (no, seq_len, dim):
                 
   return data
     
+def load_specific_data(base_path, feat_number, torque, rpm):
+    """
+    Load specific dataset based on feature number, torque, and rpm.
 
-def real_data_loading (data_name, seq_len):
+    Args:
+      - base_path: The base path where the datasets are located.
+      - feat_number: The feature number (e.g., Feat0, Feat1, etc.).
+      - torque: The torque value.
+      - rpm: The rpm value.
+
+    Returns:
+      - data: Loaded dataset.
+    """
+    file_path = f"{base_path}/gear_signals/{feat_number}/1 bandymas/{torque}/{rpm}/5.mat"
+    data = scipy.io.loadmat(file_path)
+    return data['Data']
+
+def load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm):
+    """
+    Load multiple datasets based on a list of feature numbers, torque, and rpm.
+
+    Args:
+      - base_path: The base path where the datasets are located.
+      - feat_numbers: A list of feature numbers (e.g., ['Feat0', 'Feat1', ...]).
+      - torque: The torque value.
+      - rpm: The rpm value.
+
+    Returns:
+      - data: NumPy ndarray containing loaded datasets in different columns.
+    """
+    all_data = []
+
+    for feat_number in feat_numbers:
+        file_path = f"{base_path}/gear_signals/{feat_number}/{exp_number} bandymas/{torque}/{rpm}/5.mat"
+        data = scipy.io.loadmat(file_path)['Data']
+        all_data.append(data)
+
+    combined_data = np.hstack(all_data)
+    return combined_data
+
+def real_data_loading (data_name, seq_len, base_path=None, feat_numbers=None, exp_number=None, torque=None, rpm=None):
   """Load and preprocess real-world datasets.
   
   Args:
     - data_name: stock or energy
     - seq_len: sequence length
+    - base_path: The base directory for gear_signals data.
+    - feat_number: The feature number for gear_signals data.
+    - torque: The torque value for gear_signals data.
+    - rpm: The rpm value for gear_signals data.
     
   Returns:
     - data: preprocessed data.
   """  
-  assert data_name in ['stock','energy']
+  assert data_name in ['stock', 'energy', 'gear_signals']
   
   if data_name == 'stock':
     ori_data = np.loadtxt('data/stock_data.csv', delimiter = ",",skiprows = 1)
   elif data_name == 'energy':
     ori_data = np.loadtxt('data/energy_data.csv', delimiter = ",",skiprows = 1)
-        
+  elif data_name == 'gear_signals':
+     # Ensure feat_numbers is a list
+      if not isinstance(feat_numbers, list):
+          feat_numbers = [feat_numbers]
+      ori_data = load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm)
+    
   # Flip the data to make chronological data
   ori_data = ori_data[::-1]
   # Normalize the data
