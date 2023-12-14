@@ -14,3 +14,20 @@
 2023-12-14 12:01:37 INFO step: 2500/10000, e_loss: 0.0018
 2023-12-14 12:36:06 INFO step: 2750/10000, e_loss: 0.0021
 2023-12-14 13:10:22 INFO step: 3000/10000, e_loss: 0.0018
+2023-12-14 16:10:15 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 16:10:15 INFO gear_signals dataset is ready.
+2023-12-14 16:13:03 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 16:13:03 INFO gear_signals dataset is ready.
+2023-12-14 16:14:26 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 16:14:26 INFO gear_signals dataset is ready.
+2023-12-14 16:14:49 INFO Loading model from models/timegan_embedding-3000
+2023-12-14 16:14:50 INFO Start Training with Supervised Loss Only
+2023-12-14 16:14:56 INFO step: 0/2000, s_loss: 0.1781
+2023-12-14 16:34:15 INFO step: 250/2000, s_loss: 0.0367
+2023-12-14 16:53:34 INFO step: 500/2000, s_loss: 0.0358
+2023-12-14 17:12:53 INFO step: 750/2000, s_loss: 0.0346
+2023-12-14 17:32:15 INFO step: 1000/2000, s_loss: 0.0299
+2023-12-14 17:44:26 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 3000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 17:44:26 INFO gear_signals dataset is ready.
+2023-12-14 17:44:56 INFO Loading model from models/timegan_supervised-1000
+2023-12-14 17:44:57 INFO Start Training with Supervised Loss Only

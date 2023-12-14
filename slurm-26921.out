@@ -1,0 +1,8 @@
+2023-12-14 16:13:03,536 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 16:13:03,677 INFO gear_signals dataset is ready.
+Traceback (most recent call last):
+  File "main_timegan.py", line 189, in <module>
+    ori_data, generated_data, metrics = main(args)
+  File "main_timegan.py", line 94, in main
+    generated_data = timegan(ori_data, parameters, 'models', 1000, load_dir='models')
+TypeError: timegan() got multiple values for argument 'load_dir'

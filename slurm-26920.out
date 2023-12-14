@@ -1,0 +1,52 @@
+2023-12-14 16:10:15,281 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 16:10:15,442 INFO gear_signals dataset is ready.
+2023-12-14 16:10:39.969845: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2023-12-14 16:10:40.052414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:0b:00.0
+2023-12-14 16:10:40.059821: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2023-12-14 16:10:40.110030: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2023-12-14 16:10:40.149486: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2023-12-14 16:10:40.165331: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2023-12-14 16:10:40.226610: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2023-12-14 16:10:40.264708: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2023-12-14 16:10:40.377908: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-12-14 16:10:40.379465: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2023-12-14 16:10:40.381246: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2023-12-14 16:10:40.434400: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2194845000 Hz
+2023-12-14 16:10:40.436546: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5636624c8560 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-12-14 16:10:40.436927: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-12-14 16:10:40.627148: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x563662362230 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-12-14 16:10:40.627285: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla V100-SXM2-32GB, Compute Capability 7.0
+2023-12-14 16:10:40.630095: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:0b:00.0
+2023-12-14 16:10:40.630207: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2023-12-14 16:10:40.630258: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2023-12-14 16:10:40.630304: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2023-12-14 16:10:40.630349: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2023-12-14 16:10:40.630394: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2023-12-14 16:10:40.630439: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2023-12-14 16:10:40.630485: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2023-12-14 16:10:40.631380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2023-12-14 16:10:40.632609: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2023-12-14 16:10:40.634009: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-12-14 16:10:40.634086: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2023-12-14 16:10:40.634124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2023-12-14 16:10:40.636859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:0b:00.0, compute capability: 7.0)
+Traceback (most recent call last):
+  File "main_timegan.py", line 189, in <module>
+    ori_data, generated_data, metrics = main(args)
+  File "main_timegan.py", line 94, in main
+    generated_data = timegan(ori_data, parameters, 'models', 1000)
+  File "/scratch/lustre/home/dopu7482/TimeGAN/timegan.py", line 234, in timegan
+    latest_checkpoint = tf.train.latest_checkpoint(load_dir)
+  File "/scratch/lustre/home/dopu7482/miniconda3/envs/kursinis/lib/python3.7/site-packages/tensorflow_core/python/training/checkpoint_management.py", line 334, in latest_checkpoint
+    ckpt = get_checkpoint_state(checkpoint_dir, latest_filename)
+  File "/scratch/lustre/home/dopu7482/miniconda3/envs/kursinis/lib/python3.7/site-packages/tensorflow_core/python/training/checkpoint_management.py", line 265, in get_checkpoint_state
+    latest_filename)
+  File "/scratch/lustre/home/dopu7482/miniconda3/envs/kursinis/lib/python3.7/site-packages/tensorflow_core/python/training/checkpoint_management.py", line 56, in _GetCheckpointFilename
+    return os.path.join(save_dir, latest_filename)
+  File "/scratch/lustre/home/dopu7482/miniconda3/envs/kursinis/lib/python3.7/posixpath.py", line 80, in join
+    a = os.fspath(a)
+TypeError: expected str, bytes or os.PathLike object, not int

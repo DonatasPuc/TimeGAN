@@ -25,7 +25,7 @@ from utils import extract_time, rnn_cell, random_generator, batch_generator
 
 tf.get_logger().setLevel('ERROR')
 
-def timegan (ori_data, parameters, save_dir, save_interval=1000):
+def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=1000):
   """TimeGAN function.
   
   Use original data as training set to generater synthetic data (time-series)
@@ -230,31 +230,39 @@ def timegan (ori_data, parameters, save_dir, save_interval=1000):
   # Create a saver object
   saver = tf.train.Saver()
 
+  if load_dir is not None:
+        latest_checkpoint = tf.train.latest_checkpoint(load_dir)
+        if latest_checkpoint:
+            logging.info(f"Loading model from {latest_checkpoint}")
+            saver.restore(sess, latest_checkpoint)
+        else:
+            logging.info("No model found in load_dir. Starting training from scratch.")
+
   # Make sure save directory exists
   if not os.path.exists(save_dir):
       os.makedirs(save_dir)
 
     
   # 1. Embedding network training
-  logging.info('Start Embedding Network Training')
+  # logging.info('Start Embedding Network Training')
     
-  for itt in range(iterations):
-    # Set mini-batch
-    X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)           
-    # Train embedder        
-    _, step_e_loss = sess.run([E0_solver, E_loss_T0], feed_dict={X: X_mb, T: T_mb})        
-    # Checkpoint
-    if itt % 250 == 0:
-      logging.info('step: '+ str(itt) + '/' + str(iterations) + ', e_loss: ' + str(np.round(np.sqrt(step_e_loss),4)) ) 
-    if itt % save_interval == 0:
-      saver.save(sess, os.path.join(save_dir, 'timegan_embedding'), global_step=itt)
+  # for itt in range(iterations):
+  #   # Set mini-batch
+  #   X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)           
+  #   # Train embedder        
+  #   _, step_e_loss = sess.run([E0_solver, E_loss_T0], feed_dict={X: X_mb, T: T_mb})        
+  #   # Checkpoint
+  #   if itt % 250 == 0:
+  #     logging.info('step: '+ str(itt) + '/' + str(iterations) + ', e_loss: ' + str(np.round(np.sqrt(step_e_loss),4)) ) 
+  #   if itt % save_interval == 0:
+  #     saver.save(sess, os.path.join(save_dir, 'timegan_embedding'), global_step=itt)
       
-  logging.info('Finish Embedding Network Training')
+  # logging.info('Finish Embedding Network Training')
     
   # 2. Training only with supervised loss
   logging.info('Start Training with Supervised Loss Only')
     
-  for itt in range(iterations):
+  for itt in range(1001, iterations):
     # Set mini-batch
     X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)    
     # Random vector generation   
@@ -309,18 +317,18 @@ def timegan (ori_data, parameters, save_dir, save_interval=1000):
 
   saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)
     
-  # ## Synthetic data generation
-  # Z_mb = random_generator(no, z_dim, ori_time, max_seq_len)
-  # generated_data_curr = sess.run(X_hat, feed_dict={Z: Z_mb, X: ori_data, T: ori_time})    
+  ## Synthetic data generation
+  Z_mb = random_generator(no, z_dim, ori_time, max_seq_len)
+  generated_data_curr = sess.run(X_hat, feed_dict={Z: Z_mb, X: ori_data, T: ori_time})    
     
   generated_data = list()
     
-  # for i in range(no):
-  #   temp = generated_data_curr[i,:ori_time[i],:]
-  #   generated_data.append(temp)
+  for i in range(no):
+    temp = generated_data_curr[i,:ori_time[i],:]
+    generated_data.append(temp)
         
-  # # Renormalization
-  # generated_data = generated_data * max_val
-  # generated_data = generated_data + min_val
+  # Renormalization
+  generated_data = generated_data * max_val
+  generated_data = generated_data + min_val
     
   return generated_data
