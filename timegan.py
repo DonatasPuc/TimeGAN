@@ -23,6 +23,7 @@ import tensorflow as tf
 import numpy as np
 from utils import extract_time, rnn_cell, random_generator, batch_generator
 
+tf.get_logger().setLevel('ERROR')
 
 def timegan (ori_data, parameters, save_dir, save_interval=1000):
   """TimeGAN function.
@@ -246,7 +247,7 @@ def timegan (ori_data, parameters, save_dir, save_interval=1000):
     if itt % 250 == 0:
       logging.info('step: '+ str(itt) + '/' + str(iterations) + ', e_loss: ' + str(np.round(np.sqrt(step_e_loss),4)) ) 
     if itt % save_interval == 0:
-      saver.save(sess, os.path.join(save_dir, 'timegan_embedding'), global_step=iterations)
+      saver.save(sess, os.path.join(save_dir, 'timegan_embedding'), global_step=itt)
       
   logging.info('Finish Embedding Network Training')
     
@@ -264,7 +265,7 @@ def timegan (ori_data, parameters, save_dir, save_interval=1000):
     if itt % 250 == 0:
       logging.info('step: '+ str(itt)  + '/' + str(iterations) +', s_loss: ' + str(np.round(np.sqrt(step_g_loss_s),4)) )
     if itt % save_interval == 0:
-      saver.save(sess, os.path.join(save_dir, 'timegan_supervised'), global_step=iterations)
+      saver.save(sess, os.path.join(save_dir, 'timegan_supervised'), global_step=itt)
       
   logging.info('Finish Training with Supervised Loss Only')
     
@@ -303,7 +304,7 @@ def timegan (ori_data, parameters, save_dir, save_interval=1000):
             ', g_loss_v: ' + str(np.round(step_g_loss_v,4)) + 
             ', e_loss_t0: ' + str(np.round(np.sqrt(step_e_loss_t0),4))  )
     if itt % save_interval == 0:
-      saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)
+      saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=itt)
   logging.info('Finish Joint Training')
 
   saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)

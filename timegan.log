@@ -1,36 +1,16 @@
-2023-12-14 04:05:04 INFO Started with the following arguments: {'data_name': 'stock', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 5, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
-2023-12-14 04:05:04 INFO stock dataset is ready.
-2023-12-14 04:05:29 INFO Start Embedding Network Training
-2023-12-14 04:05:40 INFO step: 0/5, e_loss: 0.3785
-2023-12-14 04:06:12 INFO Finish Embedding Network Training
-2023-12-14 04:06:12 INFO Start Training with Supervised Loss Only
-2023-12-14 04:06:17 INFO step: 0/5, s_loss: 0.0882
-2023-12-14 04:06:35 INFO Finish Training with Supervised Loss Only
-2023-12-14 04:06:35 INFO Start Joint Training
-2023-12-14 04:07:29 INFO step: 0/5, d_loss: 2.0262, g_loss_u: 0.7601, g_loss_s: 0.059, g_loss_v: 0.2811, e_loss_t0: 0.2473
-2023-12-14 04:10:18 INFO Finish Joint Training
-2023-12-14 04:10:32 INFO Finish Synthetic Data Generation
-2023-12-14 04:32:39 INFO Started with the following arguments: {'data_name': 'stock', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 5, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
-2023-12-14 04:32:39 INFO stock dataset is ready.
-2023-12-14 04:33:04 INFO Start Embedding Network Training
-2023-12-14 04:33:15 INFO step: 0/5, e_loss: 0.324
-2023-12-14 04:33:47 INFO Finish Embedding Network Training
-2023-12-14 04:33:47 INFO Start Training with Supervised Loss Only
-2023-12-14 04:33:52 INFO step: 0/5, s_loss: 0.056
-2023-12-14 04:34:09 INFO Finish Training with Supervised Loss Only
-2023-12-14 04:34:09 INFO Start Joint Training
-2023-12-14 04:35:04 INFO step: 0/5, d_loss: 2.3369, g_loss_u: 0.5469, g_loss_s: 0.0309, g_loss_v: 0.2656, e_loss_t0: 0.2295
-2023-12-14 04:37:58 INFO Finish Joint Training
-2023-12-14 04:38:11 INFO Finish Synthetic Data Generation
-2023-12-14 04:38:19 INFO PCA plot saved to: plots/20231214_043819_PCA_plot.png
-2023-12-14 04:39:14 INFO t-SNE plot saved to: plots/20231214_043914_t-SNE_plot.png
-2023-12-14 04:39:14 INFO {}
-2023-12-14 04:56:36 INFO Started with the following arguments: {'data_name': 'stock', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 5, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
-2023-12-14 04:56:36 INFO stock dataset is ready.
-2023-12-14 04:57:01 INFO Start Embedding Network Training
-2023-12-14 04:57:15 INFO step: 0/5, e_loss: 0.3199
-2023-12-14 04:58:01 INFO Finish Embedding Network Training
-2023-12-14 04:58:01 INFO Start Training with Supervised Loss Only
-2023-12-14 04:58:06 INFO step: 0/5, s_loss: 0.129
-2023-12-14 04:58:33 INFO Finish Training with Supervised Loss Only
-2023-12-14 04:58:33 INFO Start Joint Training
+2023-12-14 06:19:22 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 10000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 06:19:22 INFO gear_signals dataset is ready.
+2023-12-14 06:19:52 INFO Start Embedding Network Training
+2023-12-14 06:20:02 INFO step: 0/10000, e_loss: 0.1267
+2023-12-14 06:54:10 INFO step: 250/10000, e_loss: 0.0883
+2023-12-14 07:28:18 INFO step: 500/10000, e_loss: 0.0081
+2023-12-14 08:02:30 INFO step: 750/10000, e_loss: 0.0061
+2023-12-14 08:36:35 INFO step: 1000/10000, e_loss: 0.005
+2023-12-14 09:10:25 INFO step: 1250/10000, e_loss: 0.0029
+2023-12-14 09:44:16 INFO step: 1500/10000, e_loss: 0.0022
+2023-12-14 10:18:46 INFO step: 1750/10000, e_loss: 0.0021
+2023-12-14 10:53:12 INFO step: 2000/10000, e_loss: 0.002
+2023-12-14 11:27:20 INFO step: 2250/10000, e_loss: 0.002
+2023-12-14 12:01:37 INFO step: 2500/10000, e_loss: 0.0018
+2023-12-14 12:36:06 INFO step: 2750/10000, e_loss: 0.0021
+2023-12-14 13:10:22 INFO step: 3000/10000, e_loss: 0.0018
