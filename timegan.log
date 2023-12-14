@@ -31,3 +31,18 @@
 2023-12-14 17:44:26 INFO gear_signals dataset is ready.
 2023-12-14 17:44:56 INFO Loading model from models/timegan_supervised-1000
 2023-12-14 17:44:57 INFO Start Training with Supervised Loss Only
+2023-12-14 17:47:32 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 3000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-14 17:47:32 INFO gear_signals dataset is ready.
+2023-12-14 17:47:56 INFO Loading model from models/timegan_supervised-1000
+2023-12-14 17:47:57 INFO Start Training with Supervised Loss Only
+2023-12-14 17:48:02 INFO step: 1000/3000, s_loss: 0.0298
+2023-12-14 18:07:39 INFO step: 1250/3000, s_loss: 0.0266
+2023-12-14 18:27:15 INFO step: 1500/3000, s_loss: 0.0259
+2023-12-14 18:46:50 INFO step: 1750/3000, s_loss: 0.0258
+2023-12-14 19:06:28 INFO step: 2000/3000, s_loss: 0.0257
+2023-12-14 19:26:07 INFO step: 2250/3000, s_loss: 0.0257
+2023-12-14 19:45:45 INFO step: 2500/3000, s_loss: 0.0255
+2023-12-14 20:05:25 INFO step: 2750/3000, s_loss: 0.0256
+2023-12-14 20:25:05 INFO Finish Training with Supervised Loss Only
+2023-12-14 20:25:05 INFO Start Joint Training
+2023-12-14 20:26:46 INFO step: 0/3000, d_loss: 2.0024, g_loss_u: 0.9279, g_loss_s: 0.0564, g_loss_v: 0.13, e_loss_t0: 0.0661

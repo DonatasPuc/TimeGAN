@@ -260,22 +260,22 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=1000):
   # logging.info('Finish Embedding Network Training')
     
   # 2. Training only with supervised loss
-  logging.info('Start Training with Supervised Loss Only')
+  # logging.info('Start Training with Supervised Loss Only')
     
-  for itt in range(1001, iterations):
-    # Set mini-batch
-    X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)    
-    # Random vector generation   
-    Z_mb = random_generator(batch_size, z_dim, T_mb, max_seq_len)
-    # Train generator       
-    _, step_g_loss_s = sess.run([GS_solver, G_loss_S], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})       
-    # Checkpoint
-    if itt % 250 == 0:
-      logging.info('step: '+ str(itt)  + '/' + str(iterations) +', s_loss: ' + str(np.round(np.sqrt(step_g_loss_s),4)) )
-    if itt % save_interval == 0:
-      saver.save(sess, os.path.join(save_dir, 'timegan_supervised'), global_step=itt)
+  # for itt in range(1000, iterations):
+  #   # Set mini-batch
+  #   X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)    
+  #   # Random vector generation   
+  #   Z_mb = random_generator(batch_size, z_dim, T_mb, max_seq_len)
+  #   # Train generator       
+  #   _, step_g_loss_s = sess.run([GS_solver, G_loss_S], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})       
+  #   # Checkpoint
+  #   if itt % 250 == 0:
+  #     logging.info('step: '+ str(itt)  + '/' + str(iterations) +', s_loss: ' + str(np.round(np.sqrt(step_g_loss_s),4)) )
+  #   if itt % save_interval == 0:
+  #     saver.save(sess, os.path.join(save_dir, 'timegan_supervised'), global_step=itt)
       
-  logging.info('Finish Training with Supervised Loss Only')
+  # logging.info('Finish Training with Supervised Loss Only')
     
   # 3. Joint Training
   logging.info('Start Joint Training')

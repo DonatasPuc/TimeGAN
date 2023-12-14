@@ -91,7 +91,7 @@ def main (args):
   parameters['iterations'] = args.iteration
   parameters['batch_size'] = args.batch_size
       
-  generated_data = timegan(ori_data, parameters, 'models', 'models', 1000)
+  generated_data = timegan(ori_data, parameters, 'models', 'models', 100)
   logging.info('Finish Synthetic Data Generation')
   
   ## Performance metrics   

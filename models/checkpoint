@@ -1,3 +1,4 @@
-model_checkpoint_path: "timegan_supervised-1000"
-all_model_checkpoint_paths: "timegan_supervised-0"
+model_checkpoint_path: "timegan_joint-0"
 all_model_checkpoint_paths: "timegan_supervised-1000"
+all_model_checkpoint_paths: "timegan_supervised-2000"
+all_model_checkpoint_paths: "timegan_joint-0"
