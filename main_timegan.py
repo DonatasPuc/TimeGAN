@@ -27,8 +27,10 @@ from __future__ import division
 from __future__ import print_function
 
 import argparse
+import logging
 import numpy as np
 import warnings
+from log_config import setup_logging
 warnings.filterwarnings("ignore")
 
 # 1. TimeGAN model
@@ -45,7 +47,7 @@ def main (args):
   """Main function for timeGAN experiments.
   
   Args:
-    - data_name: sine, stock, or energy
+    - data_name: sine, stock, energy or gear_signals
     - seq_len: sequence length
     - Network parameters (should be optimized for different datasets)
       - module: gru, lstm, or lstmLN
@@ -60,6 +62,10 @@ def main (args):
     - generated_data: generated synthetic data
     - metric_results: discriminative and predictive scores
   """
+  # Initialize logging
+  args = parser.parse_args()
+  setup_logging(args.logfile)
+
   ## Data loading
   if args.data_name in ['stock', 'energy']:
     ori_data = real_data_loading(args.data_name, args.seq_len)
@@ -67,8 +73,11 @@ def main (args):
     # Set number of samples and its dimensions
     no, dim = 10000, 5
     ori_data = sine_data_generation(no, args.seq_len, dim)
+  elif args.data_name == 'gear_signals':
+    # Set number of samples and its dimensions
+    ori_data = real_data_loading("gear_signals", args.seq_len, base_path="data", feat_numbers=[args.feature_number], exp_number="1", torque="75", rpm="3000")
     
-  print(args.data_name + ' dataset is ready.')
+  logging.info(args.data_name + ' dataset is ready.')
     
   ## Synthetic data generation by TimeGAN
   # Set newtork parameters
@@ -80,7 +89,7 @@ def main (args):
   parameters['batch_size'] = args.batch_size
       
   generated_data = timegan(ori_data, parameters)   
-  print('Finish Synthetic Data Generation')
+  logging.info('Finish Synthetic Data Generation')
   
   ## Performance metrics   
   # Output initialization
@@ -107,7 +116,7 @@ def main (args):
   visualization(ori_data, generated_data, 'tsne')
   
   ## Print discriminative and predictive scores
-  print(metric_results)
+  logging.info(metric_results)
 
   return ori_data, generated_data, metric_results
 
@@ -118,7 +127,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument(
       '--data_name',
-      choices=['sine','stock','energy'],
+      choices=['sine','stock','energy','gear_signals'],
       default='stock',
       type=str)
   parser.add_argument(
@@ -156,6 +165,17 @@ if __name__ == '__main__':
       help='iterations of the metric computation',
       default=10,
       type=int)
+  parser.add_argument(
+      '--logfile',
+      help='the location of the log file to which logs will be written',
+      default='timegan_log.txt',
+      type=str)
+  parser.add_argument(
+      '--feature_number',
+      help='the location of the log file to which logs will be written',
+      choices=['Feat0','Feat1','Feat2','Feat3','Feat4','Feat5','Feat6'],
+      default='Feat0',
+      type=str)
   
   args = parser.parse_args() 
   
