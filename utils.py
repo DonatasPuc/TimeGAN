@@ -24,7 +24,6 @@ utils.py
 import numpy as np
 import tensorflow as tf
 
-
 def train_test_divide (data_x, data_x_hat, data_t, data_t_hat, train_rate = 0.8):
   """Divide train and test data for both original and synthetic data.
   

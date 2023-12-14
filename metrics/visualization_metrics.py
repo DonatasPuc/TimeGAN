@@ -17,6 +17,7 @@ Note: Use PCA or tSNE for generated and original data visualization
 """
 
 # Necessary packages
+import logging
 from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
@@ -85,6 +86,7 @@ def visualization (ori_data, generated_data, analysis, plot_synthetic=True):
     # Saving the plot with date and time in the filename
     current_datetime = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"plots/{current_datetime}_PCA_plot.png"
+    logging.info(f'PCA plot saved to: {filename}')
     plt.savefig(filename)
     plt.show()
     
@@ -115,5 +117,6 @@ def visualization (ori_data, generated_data, analysis, plot_synthetic=True):
     # Saving the plot with date and time in the filename
     current_datetime = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"plots/{current_datetime}_t-SNE_plot.png"
+    logging.info(f't-SNE plot saved to: {filename}')
     plt.savefig(filename)
     plt.show()    

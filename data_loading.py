@@ -22,7 +22,6 @@ data_loading.py
 
 ## Necessary Packages
 import numpy as np
-import pandas as pd
 import scipy.io
 
 

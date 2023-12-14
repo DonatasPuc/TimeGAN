@@ -33,6 +33,7 @@ import warnings
 from log_config import setup_logging
 warnings.filterwarnings("ignore")
 
+
 # 1. TimeGAN model
 from timegan import timegan
 # 2. Data loading
@@ -66,6 +67,8 @@ def main (args):
   args = parser.parse_args()
   setup_logging(args.logfile)
 
+  logging.info("Started with the following arguments: %s", vars(args))
+
   ## Data loading
   if args.data_name in ['stock', 'energy']:
     ori_data = real_data_loading(args.data_name, args.seq_len)
@@ -88,7 +91,7 @@ def main (args):
   parameters['iterations'] = args.iteration
   parameters['batch_size'] = args.batch_size
       
-  generated_data = timegan(ori_data, parameters)   
+  timegan(ori_data, parameters, 'models', 2)
   logging.info('Finish Synthetic Data Generation')
   
   ## Performance metrics   
@@ -96,27 +99,30 @@ def main (args):
   metric_results = dict()
   
   # 1. Discriminative Score
-  discriminative_score = list()
-  for _ in range(args.metric_iteration):
-    temp_disc = discriminative_score_metrics(ori_data, generated_data)
-    discriminative_score.append(temp_disc)
+  # discriminative_score = list()
+  # for _ in range(args.metric_iteration):
+  #   temp_disc = discriminative_score_metrics(ori_data, generated_data)
+  #   discriminative_score.append(temp_disc)
       
-  metric_results['discriminative'] = np.mean(discriminative_score)
+  # metric_results['discriminative'] = np.mean(discriminative_score)
       
-  # 2. Predictive score
-  predictive_score = list()
-  for tt in range(args.metric_iteration):
-    temp_pred = predictive_score_metrics(ori_data, generated_data)
-    predictive_score.append(temp_pred)   
+  # # 2. Predictive score
+  # predictive_score = list()
+  # for tt in range(args.metric_iteration):
+  #   temp_pred = predictive_score_metrics(ori_data, generated_data)
+  #   predictive_score.append(temp_pred)   
       
-  metric_results['predictive'] = np.mean(predictive_score)     
+  # metric_results['predictive'] = np.mean(predictive_score)     
           
   # 3. Visualization (PCA and tSNE)
-  visualization(ori_data, generated_data, 'pca')
-  visualization(ori_data, generated_data, 'tsne')
+  # visualization(ori_data, generated_data, 'pca')
+  # visualization(ori_data, generated_data, 'tsne')
   
-  ## Print discriminative and predictive scores
-  logging.info(metric_results)
+  # ## Print discriminative and predictive scores
+  # logging.info(metric_results)
+
+  # print(generated_data)
+  # print(generated_data.shape)
 
   return ori_data, generated_data, metric_results
 
@@ -168,7 +174,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--logfile',
       help='the location of the log file to which logs will be written',
-      default='timegan_log.txt',
+      default='timegan.log',
       type=str)
   parser.add_argument(
       '--feature_number',
@@ -177,7 +183,7 @@ if __name__ == '__main__':
       default='Feat0',
       type=str)
   
-  args = parser.parse_args() 
+  args = parser.parse_args()
   
   # Calls main function  
   ori_data, generated_data, metrics = main(args)

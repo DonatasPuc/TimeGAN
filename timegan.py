@@ -18,12 +18,13 @@ Note: Use original data as training set to generater synthetic data (time-series
 
 # Necessary Packages
 import logging
+import os
 import tensorflow as tf
 import numpy as np
 from utils import extract_time, rnn_cell, random_generator, batch_generator
 
 
-def timegan (ori_data, parameters):
+def timegan (ori_data, parameters, save_dir, save_interval=1000):
   """TimeGAN function.
   
   Use original data as training set to generater synthetic data (time-series)
@@ -224,6 +225,14 @@ def timegan (ori_data, parameters):
   ## TimeGAN training   
   sess = tf.Session()
   sess.run(tf.global_variables_initializer())
+
+  # Create a saver object
+  saver = tf.train.Saver()
+
+  # Make sure save directory exists
+  if not os.path.exists(save_dir):
+      os.makedirs(save_dir)
+
     
   # 1. Embedding network training
   logging.info('Start Embedding Network Training')
@@ -236,6 +245,8 @@ def timegan (ori_data, parameters):
     # Checkpoint
     if itt % 250 == 0:
       logging.info('step: '+ str(itt) + '/' + str(iterations) + ', e_loss: ' + str(np.round(np.sqrt(step_e_loss),4)) ) 
+    if itt % save_interval == 0:
+      saver.save(sess, os.path.join(save_dir, 'timegan_embedding'), global_step=iterations)
       
   logging.info('Finish Embedding Network Training')
     
@@ -252,6 +263,8 @@ def timegan (ori_data, parameters):
     # Checkpoint
     if itt % 250 == 0:
       logging.info('step: '+ str(itt)  + '/' + str(iterations) +', s_loss: ' + str(np.round(np.sqrt(step_g_loss_s),4)) )
+    if itt % save_interval == 0:
+      saver.save(sess, os.path.join(save_dir, 'timegan_supervised'), global_step=iterations)
       
   logging.info('Finish Training with Supervised Loss Only')
     
@@ -289,20 +302,24 @@ def timegan (ori_data, parameters):
             ', g_loss_s: ' + str(np.round(np.sqrt(step_g_loss_s),4)) + 
             ', g_loss_v: ' + str(np.round(step_g_loss_v,4)) + 
             ', e_loss_t0: ' + str(np.round(np.sqrt(step_e_loss_t0),4))  )
+    if itt % save_interval == 0:
+      saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)
   logging.info('Finish Joint Training')
+
+  saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)
     
-  ## Synthetic data generation
-  Z_mb = random_generator(no, z_dim, ori_time, max_seq_len)
-  generated_data_curr = sess.run(X_hat, feed_dict={Z: Z_mb, X: ori_data, T: ori_time})    
+  # ## Synthetic data generation
+  # Z_mb = random_generator(no, z_dim, ori_time, max_seq_len)
+  # generated_data_curr = sess.run(X_hat, feed_dict={Z: Z_mb, X: ori_data, T: ori_time})    
     
   generated_data = list()
     
-  for i in range(no):
-    temp = generated_data_curr[i,:ori_time[i],:]
-    generated_data.append(temp)
+  # for i in range(no):
+  #   temp = generated_data_curr[i,:ori_time[i],:]
+  #   generated_data.append(temp)
         
-  # Renormalization
-  generated_data = generated_data * max_val
-  generated_data = generated_data + min_val
+  # # Renormalization
+  # generated_data = generated_data * max_val
+  # generated_data = generated_data + min_val
     
   return generated_data
