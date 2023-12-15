@@ -52,3 +52,4 @@
 2023-12-14 23:26:55 INFO Start Joint Training
 2023-12-14 23:28:35 INFO step: 0/2000, d_loss: 1.968, g_loss_u: 1.023, g_loss_s: 0.0453, g_loss_v: 0.0967, e_loss_t0: 0.0177
 2023-12-15 05:58:57 INFO step: 250/2000, d_loss: 1.7945, g_loss_u: 1.0452, g_loss_s: 0.0272, g_loss_v: 0.0185, e_loss_t0: 0.0016
+2023-12-15 12:29:07 INFO step: 500/2000, d_loss: 1.8406, g_loss_u: 1.1231, g_loss_s: 0.0278, g_loss_v: 0.0195, e_loss_t0: 0.0015

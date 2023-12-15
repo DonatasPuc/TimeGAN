@@ -39,3 +39,5 @@ pciBusID: 0000:0b:00.0
 2023-12-14 23:26:57.718849: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
 2023-12-14 23:28:35,218 INFO step: 0/2000, d_loss: 1.968, g_loss_u: 1.023, g_loss_s: 0.0453, g_loss_v: 0.0967, e_loss_t0: 0.0177
 2023-12-15 05:58:57,750 INFO step: 250/2000, d_loss: 1.7945, g_loss_u: 1.0452, g_loss_s: 0.0272, g_loss_v: 0.0185, e_loss_t0: 0.0016
+2023-12-15 12:29:07,047 INFO step: 500/2000, d_loss: 1.8406, g_loss_u: 1.1231, g_loss_s: 0.0278, g_loss_v: 0.0195, e_loss_t0: 0.0015
+slurmstepd-node-37: error: *** JOB 26960 ON node-37 CANCELLED AT 2023-12-15T13:08:45 ***
