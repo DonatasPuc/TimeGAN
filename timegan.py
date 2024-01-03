@@ -25,7 +25,7 @@ from utils import extract_time, rnn_cell, random_generator, batch_generator
 
 tf.get_logger().setLevel('ERROR')
 
-def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=1000):
+def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
   """TimeGAN function.
   
   Use original data as training set to generater synthetic data (time-series)
@@ -243,7 +243,7 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=1000):
       os.makedirs(save_dir)
 
     
-  # 1. Embedding network training
+  # # 1. Embedding network training
   # logging.info('Start Embedding Network Training')
     
   # for itt in range(iterations):
@@ -259,10 +259,10 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=1000):
       
   # logging.info('Finish Embedding Network Training')
     
-  # 2. Training only with supervised loss
+  # # 2. Training only with supervised loss
   # logging.info('Start Training with Supervised Loss Only')
     
-  # for itt in range(1000, iterations):
+  # for itt in range(iterations):
   #   # Set mini-batch
   #   X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)    
   #   # Random vector generation   
@@ -277,55 +277,65 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=1000):
       
   # logging.info('Finish Training with Supervised Loss Only')
     
-  # 3. Joint Training
-  logging.info('Start Joint Training')
+  # # 3. Joint Training
+  # logging.info('Start Joint Training')
   
-  for itt in range(iterations):
-    # Generator training (twice more than discriminator training)
-    for kk in range(2):
-      # Set mini-batch
-      X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)               
-      # Random vector generation
-      Z_mb = random_generator(batch_size, z_dim, T_mb, max_seq_len)
-      # Train generator
-      _, step_g_loss_u, step_g_loss_s, step_g_loss_v = sess.run([G_solver, G_loss_U, G_loss_S, G_loss_V], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})
-       # Train embedder        
-      _, step_e_loss_t0 = sess.run([E_solver, E_loss_T0], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})   
+  # for itt in range(iterations):
+  #   # Generator training (twice more than discriminator training)
+  #   for kk in range(2):
+  #     # Set mini-batch
+  #     X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)               
+  #     # Random vector generation
+  #     Z_mb = random_generator(batch_size, z_dim, T_mb, max_seq_len)
+  #     # Train generator
+  #     _, step_g_loss_u, step_g_loss_s, step_g_loss_v = sess.run([G_solver, G_loss_U, G_loss_S, G_loss_V], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})
+  #      # Train embedder        
+  #     _, step_e_loss_t0 = sess.run([E_solver, E_loss_T0], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})   
            
-    # Discriminator training        
-    # Set mini-batch
-    X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)           
-    # Random vector generation
-    Z_mb = random_generator(batch_size, z_dim, T_mb, max_seq_len)
-    # Check discriminator loss before updating
-    check_d_loss = sess.run(D_loss, feed_dict={X: X_mb, T: T_mb, Z: Z_mb})
-    # Train discriminator (only when the discriminator does not work well)
-    if (check_d_loss > 0.15):        
-      _, step_d_loss = sess.run([D_solver, D_loss], feed_dict={X: X_mb, T: T_mb, Z: Z_mb})
+  #   # Discriminator training        
+  #   # Set mini-batch
+  #   X_mb, T_mb = batch_generator(ori_data, ori_time, batch_size)           
+  #   # Random vector generation
+  #   Z_mb = random_generator(batch_size, z_dim, T_mb, max_seq_len)
+  #   # Check discriminator loss before updating
+  #   check_d_loss = sess.run(D_loss, feed_dict={X: X_mb, T: T_mb, Z: Z_mb})
+  #   # Train discriminator (only when the discriminator does not work well)
+  #   if (check_d_loss > 0.15):        
+  #     _, step_d_loss = sess.run([D_solver, D_loss], feed_dict={X: X_mb, T: T_mb, Z: Z_mb})
         
-    # Print multiple checkpoints
-    if itt % 250 == 0:
-      logging.info('step: '+ str(itt) + '/' + str(iterations) + 
-            ', d_loss: ' + str(np.round(step_d_loss,4)) + 
-            ', g_loss_u: ' + str(np.round(step_g_loss_u,4)) + 
-            ', g_loss_s: ' + str(np.round(np.sqrt(step_g_loss_s),4)) + 
-            ', g_loss_v: ' + str(np.round(step_g_loss_v,4)) + 
-            ', e_loss_t0: ' + str(np.round(np.sqrt(step_e_loss_t0),4))  )
-    if itt % save_interval == 0:
-      saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=itt)
-  logging.info('Finish Joint Training')
+  #   # Print multiple checkpoints
+  #   if itt % 250 == 0:
+  #     logging.info('step: '+ str(itt) + '/' + str(iterations) + 
+  #           ', d_loss: ' + str(np.round(step_d_loss,4)) + 
+  #           ', g_loss_u: ' + str(np.round(step_g_loss_u,4)) + 
+  #           ', g_loss_s: ' + str(np.round(np.sqrt(step_g_loss_s),4)) + 
+  #           ', g_loss_v: ' + str(np.round(step_g_loss_v,4)) + 
+  #           ', e_loss_t0: ' + str(np.round(np.sqrt(step_e_loss_t0),4))  )
+  #   if itt % save_interval == 0:
+  #     saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=itt)
+  # logging.info('Finish Joint Training')
 
-  saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)
+  # saver.save(sess, os.path.join(save_dir, 'timegan_joint'), global_step=iterations)
+
+  # logging.info("after training")
     
   ## Synthetic data generation
   Z_mb = random_generator(no, z_dim, ori_time, max_seq_len)
+  logging.info("after random generator")
+
+  # logging.info("Shape of Z_mb:", tf.shape(Z_mb))
+  # logging.info("Shape of ori_time:", tf.shape(ori_time))
+
   generated_data_curr = sess.run(X_hat, feed_dict={Z: Z_mb, X: ori_data, T: ori_time})    
+  logging.info("after generated_data_curr")
     
   generated_data = list()
     
   for i in range(no):
     temp = generated_data_curr[i,:ori_time[i],:]
     generated_data.append(temp)
+
+  logging.info("after append")
         
   # Renormalization
   generated_data = generated_data * max_val

@@ -1,0 +1,68 @@
+2024-01-03 17:31:37.895100: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2024-01-03 17:31:37.990392: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:8a:00.0
+2024-01-03 17:31:37.992223: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 17:31:37.994377: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 17:31:37.996414: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-03 17:31:37.997242: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-03 17:31:37.999760: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-03 17:31:38.001488: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-03 17:31:38.006214: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-03 17:31:38.007475: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-03 17:31:38.007819: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2024-01-03 17:31:38.016089: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2195035000 Hz
+2024-01-03 17:31:38.016272: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55f7d9c04a70 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2024-01-03 17:31:38.016323: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2024-01-03 17:31:38.201873: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55f7d9beffd0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-01-03 17:31:38.202036: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla V100-SXM2-32GB, Compute Capability 7.0
+2024-01-03 17:31:38.202622: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:8a:00.0
+2024-01-03 17:31:38.202735: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 17:31:38.202791: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 17:31:38.202842: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-03 17:31:38.202891: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-03 17:31:38.202941: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-03 17:31:38.202990: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-03 17:31:38.203042: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-03 17:31:38.203997: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-03 17:31:38.204118: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 17:31:38.204665: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-03 17:31:38.204770: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2024-01-03 17:31:38.204808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2024-01-03 17:31:38.205783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:8a:00.0, compute capability: 7.0)
+2024-01-03 17:31:40,085 INFO Loading model from models/timegan_joint-1
+2024-01-03 17:31:40,913 INFO Start Embedding Network Training
+2024-01-03 17:31:41.866055: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 17:31:50,180 INFO step: 0/1, e_loss: 0.1294
+2024-01-03 17:31:51,527 INFO Finish Embedding Network Training
+2024-01-03 17:31:51,528 INFO Start Training with Supervised Loss Only
+2024-01-03 17:31:56,773 INFO step: 0/1, s_loss: 0.0305
+2024-01-03 17:31:57,493 INFO Finish Training with Supervised Loss Only
+2024-01-03 17:31:57,494 INFO Start Joint Training
+2024-01-03 17:33:38,223 INFO step: 0/1, d_loss: 1.927, g_loss_u: 1.2064, g_loss_s: 0.0271, g_loss_v: 0.1523, e_loss_t0: 0.1284
+2024-01-03 17:33:38,966 INFO Finish Joint Training
+2024-01-03 17:33:39,642 INFO after training
+2024-01-03 17:33:39,960 INFO after random generator
+2024-01-03 17:33:46,017 INFO after generated_data_curr
+2024-01-03 17:33:46,026 INFO after append
+2024-01-03 17:33:46,209 INFO <class 'numpy.ndarray'>
+2024-01-03 17:33:46,240 INFO None
+2024-01-03 17:33:46,368 INFO Finish Synthetic Data Generation
+2024-01-03 17:33:47.111408: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:8a:00.0
+2024-01-03 17:33:47.111584: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 17:33:47.111650: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 17:33:47.111710: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-03 17:33:47.111769: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-03 17:33:47.111831: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-03 17:33:47.111890: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-03 17:33:47.111947: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-03 17:33:47.112832: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-03 17:33:47.112927: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-03 17:33:47.112982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2024-01-03 17:33:47.113019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2024-01-03 17:33:47.113942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:8a:00.0, compute capability: 7.0)
+slurmstepd-node-37: error: *** JOB 28391 ON node-37 CANCELLED AT 2024-01-03T17:38:01 ***

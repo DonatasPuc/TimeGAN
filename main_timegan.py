@@ -78,7 +78,7 @@ def main (args):
     ori_data = sine_data_generation(no, args.seq_len, dim)
   elif args.data_name == 'gear_signals':
     # Set number of samples and its dimensions
-    ori_data = real_data_loading("gear_signals", args.seq_len, base_path="data", feat_numbers=[args.feature_number], exp_number="1", torque="75", rpm="3000")
+    ori_data = real_data_loading("gear_signals", args.seq_len, base_path="data", percentage=args.dataset_percentage, feat_numbers=[args.feature_number], exp_number="1", torque="75", rpm="3000")
     
   logging.info(args.data_name + ' dataset is ready.')
     
@@ -98,7 +98,7 @@ def main (args):
   # Output initialization
   metric_results = dict()
   
-  # 1. Discriminative Score
+  # # 1. Discriminative Score
   # discriminative_score = list()
   # for _ in range(args.metric_iteration):
   #   temp_disc = discriminative_score_metrics(ori_data, generated_data)
@@ -114,15 +114,20 @@ def main (args):
       
   # metric_results['predictive'] = np.mean(predictive_score)     
           
-  # 3. Visualization (PCA and tSNE)
-  # visualization(ori_data, generated_data, 'pca')
-  # visualization(ori_data, generated_data, 'tsne')
+  # # 3. Visualization (PCA and tSNE)
+  # visualization(ori_data, generated_data, 'pca', plot_synthetic=True)
+  # visualization(ori_data, generated_data, 'tsne', plot_synthetic=True)
   
   # ## Print discriminative and predictive scores
   # logging.info(metric_results)
 
   # print(generated_data)
-  # print(generated_data.shape)
+
+  # Data preprocessing
+  ori_data = np.asarray(ori_data)
+  generated_data = np.asarray(generated_data)  
+
+  np.savetxt('arrays.csv', np.vstack((ori_data, generated_data)), delimiter=',', fmt='%d')
 
   return ori_data, generated_data, metric_results
 
@@ -182,6 +187,11 @@ if __name__ == '__main__':
       choices=['Feat0','Feat1','Feat2','Feat3','Feat4','Feat5','Feat6'],
       default='Feat0',
       type=str)
+  parser.add_argument(
+      '--dataset_percentage',
+      help='load only the specified percentage of data from the original dataset',
+      default=10,
+      type=int)
   
   args = parser.parse_args()
   

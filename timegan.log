@@ -53,3 +53,189 @@
 2023-12-14 23:28:35 INFO step: 0/2000, d_loss: 1.968, g_loss_u: 1.023, g_loss_s: 0.0453, g_loss_v: 0.0967, e_loss_t0: 0.0177
 2023-12-15 05:58:57 INFO step: 250/2000, d_loss: 1.7945, g_loss_u: 1.0452, g_loss_s: 0.0272, g_loss_v: 0.0185, e_loss_t0: 0.0016
 2023-12-15 12:29:07 INFO step: 500/2000, d_loss: 1.8406, g_loss_u: 1.1231, g_loss_s: 0.0278, g_loss_v: 0.0195, e_loss_t0: 0.0015
+2023-12-15 13:14:34 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 13:14:34 INFO gear_signals dataset is ready.
+2023-12-15 13:15:20 INFO Loading model from models/timegan_joint-500
+2023-12-15 13:20:04 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 13:20:04 INFO gear_signals dataset is ready.
+2023-12-15 13:20:33 INFO Loading model from models/timegan_joint-500
+2023-12-15 13:31:28 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 13:31:29 INFO gear_signals dataset is ready.
+2023-12-15 13:31:57 INFO Loading model from models/timegan_joint-500
+2023-12-15 13:31:57 INFO Start Embedding Network Training
+2023-12-15 13:32:07 INFO step: 0/1, e_loss: 0.0015
+2023-12-15 13:32:07 INFO Finish Embedding Network Training
+2023-12-15 13:32:07 INFO Start Training with Supervised Loss Only
+2023-12-15 13:32:07 INFO Finish Training with Supervised Loss Only
+2023-12-15 13:32:07 INFO Start Joint Training
+2023-12-15 13:33:47 INFO step: 0/1, d_loss: 1.8621, g_loss_u: 1.1313, g_loss_s: 0.0283, g_loss_v: 0.0201, e_loss_t0: 0.0016
+2023-12-15 13:33:47 INFO Finish Joint Training
+2023-12-15 17:46:14 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 17:46:14 INFO gear_signals dataset is ready.
+2023-12-15 17:46:43 INFO Loading model from models/timegan_joint-500
+2023-12-15 17:49:24 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 17:49:24 INFO gear_signals dataset is ready.
+2023-12-15 17:49:52 INFO Loading model from models/timegan_joint-500
+2023-12-15 17:49:53 INFO Start Embedding Network Training
+2023-12-15 17:50:03 INFO step: 0/1, e_loss: 0.0015
+2023-12-15 17:50:03 INFO Finish Embedding Network Training
+2023-12-15 17:50:03 INFO Start Training with Supervised Loss Only
+2023-12-15 17:50:03 INFO Finish Training with Supervised Loss Only
+2023-12-15 17:50:03 INFO Start Joint Training
+2023-12-15 17:51:41 INFO step: 0/1, d_loss: 1.8576, g_loss_u: 1.1307, g_loss_s: 0.0283, g_loss_v: 0.0204, e_loss_t0: 0.0015
+2023-12-15 17:51:41 INFO Finish Joint Training
+2023-12-15 17:54:15 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 17:54:15 INFO gear_signals dataset is ready.
+2023-12-15 17:54:43 INFO Loading model from models/timegan_joint-500
+2023-12-15 17:54:44 INFO Start Embedding Network Training
+2023-12-15 17:54:54 INFO step: 0/1, e_loss: 0.0015
+2023-12-15 17:54:54 INFO Finish Embedding Network Training
+2023-12-15 17:54:54 INFO Start Training with Supervised Loss Only
+2023-12-15 17:54:59 INFO step: 0/1, s_loss: 0.03
+2023-12-15 17:54:59 INFO Finish Training with Supervised Loss Only
+2023-12-15 17:54:59 INFO Start Joint Training
+2023-12-15 17:56:37 INFO step: 0/1, d_loss: 1.8706, g_loss_u: 1.1401, g_loss_s: 0.0315, g_loss_v: 0.0193, e_loss_t0: 0.0014
+2023-12-15 17:56:37 INFO Finish Joint Training
+2023-12-15 21:10:03 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:10:03 INFO gear_signals dataset is ready.
+2023-12-15 21:10:33 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:10:34 INFO Finish Joint Training
+2023-12-15 21:10:34 INFO after training
+2023-12-15 21:12:07 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:12:08 INFO gear_signals dataset is ready.
+2023-12-15 21:12:36 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:12:37 INFO Finish Joint Training
+2023-12-15 21:12:37 INFO after training
+2023-12-15 21:12:45 INFO after random generator
+2023-12-15 21:13:49 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:13:50 INFO gear_signals dataset is ready.
+2023-12-15 21:14:18 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:14:19 INFO Finish Joint Training
+2023-12-15 21:14:19 INFO after training
+2023-12-15 21:14:27 INFO after random generator
+2023-12-15 21:16:13 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:16:13 INFO gear_signals dataset is ready.
+2023-12-15 21:16:42 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:16:42 INFO Finish Joint Training
+2023-12-15 21:16:42 INFO after training
+2023-12-15 21:16:51 INFO after random generator
+2023-12-15 21:21:49 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:21:49 INFO gear_signals dataset is ready.
+2023-12-15 21:22:17 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:22:18 INFO Finish Joint Training
+2023-12-15 21:22:18 INFO after training
+2023-12-15 21:22:27 INFO after random generator
+2023-12-15 21:23:16 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:23:17 INFO gear_signals dataset is ready.
+2023-12-15 21:23:46 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:23:47 INFO Finish Joint Training
+2023-12-15 21:23:47 INFO after training
+2023-12-15 21:23:56 INFO after random generator
+2023-12-15 21:28:38 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:28:38 INFO gear_signals dataset is ready.
+2023-12-15 21:29:07 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:29:08 INFO Finish Joint Training
+2023-12-15 21:29:08 INFO after training
+2023-12-15 21:29:16 INFO after random generator
+2023-12-15 21:30:15 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:30:15 INFO gear_signals dataset is ready.
+2023-12-15 21:30:44 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:30:45 INFO Finish Joint Training
+2023-12-15 21:30:45 INFO after training
+2023-12-15 21:30:54 INFO after random generator
+2023-12-15 21:35:41 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:35:41 INFO gear_signals dataset is ready.
+2023-12-15 21:36:05 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:36:06 INFO Finish Joint Training
+2023-12-15 21:36:06 INFO after training
+2023-12-15 21:36:15 INFO after random generator
+2023-12-15 21:39:13 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:39:13 INFO gear_signals dataset is ready.
+2023-12-15 21:39:37 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:39:38 INFO Finish Joint Training
+2023-12-15 21:39:38 INFO after training
+2023-12-15 21:39:38 INFO after random generator
+2023-12-15 21:47:26 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:47:26 INFO gear_signals dataset is ready.
+2023-12-15 21:47:50 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:47:51 INFO Finish Joint Training
+2023-12-15 21:47:51 INFO after training
+2023-12-15 21:47:51 INFO after random generator
+2023-12-15 21:48:26 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat3'}
+2023-12-15 21:48:27 INFO gear_signals dataset is ready.
+2023-12-15 21:48:50 INFO Loading model from models/timegan_joint-500
+2023-12-15 21:48:51 INFO Finish Joint Training
+2023-12-15 21:48:51 INFO after training
+2023-12-15 21:48:51 INFO after random generator
+2024-01-03 17:10:26 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 50000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat0', 'dataset_percentage': 5}
+2024-01-03 17:12:29 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 50000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat0', 'dataset_percentage': 5}
+2024-01-03 17:12:29 INFO gear_signals dataset is ready.
+2024-01-03 17:13:01 INFO No model found in load_dir. Starting training from scratch.
+2024-01-03 17:13:01 INFO Start Embedding Network Training
+2024-01-03 17:13:11 INFO step: 0/50000, e_loss: 0.1656
+2024-01-03 17:19:36 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 5}
+2024-01-03 17:19:36 INFO gear_signals dataset is ready.
+2024-01-03 17:19:50 INFO No model found in load_dir. Starting training from scratch.
+2024-01-03 17:19:50 INFO Start Embedding Network Training
+2024-01-03 17:19:59 INFO step: 0/1, e_loss: 0.1462
+2024-01-03 17:20:00 INFO Finish Embedding Network Training
+2024-01-03 17:20:00 INFO Start Training with Supervised Loss Only
+2024-01-03 17:20:06 INFO step: 0/1, s_loss: 0.0643
+2024-01-03 17:20:06 INFO Finish Training with Supervised Loss Only
+2024-01-03 17:20:06 INFO Start Joint Training
+2024-01-03 17:21:45 INFO step: 0/1, d_loss: 1.9399, g_loss_u: 0.9067, g_loss_s: 0.0461, g_loss_v: 0.1707, e_loss_t0: 0.1336
+2024-01-03 17:21:46 INFO Finish Joint Training
+2024-01-03 17:21:47 INFO after training
+2024-01-03 17:21:47 INFO after random generator
+2024-01-03 17:26:23 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 5}
+2024-01-03 17:26:23 INFO gear_signals dataset is ready.
+2024-01-03 17:26:38 INFO Loading model from models/timegan_joint-1
+2024-01-03 17:26:38 INFO Start Embedding Network Training
+2024-01-03 17:26:48 INFO step: 0/1, e_loss: 0.1267
+2024-01-03 17:26:49 INFO Finish Embedding Network Training
+2024-01-03 17:26:49 INFO Start Training with Supervised Loss Only
+2024-01-03 17:26:54 INFO step: 0/1, s_loss: 0.0393
+2024-01-03 17:26:55 INFO Finish Training with Supervised Loss Only
+2024-01-03 17:26:55 INFO Start Joint Training
+2024-01-03 17:28:35 INFO step: 0/1, d_loss: 1.9152, g_loss_u: 1.0693, g_loss_s: 0.0321, g_loss_v: 0.1327, e_loss_t0: 0.1251
+2024-01-03 17:28:36 INFO Finish Joint Training
+2024-01-03 17:28:36 INFO after training
+2024-01-03 17:28:36 INFO after random generator
+2024-01-03 17:31:26 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 5}
+2024-01-03 17:31:26 INFO gear_signals dataset is ready.
+2024-01-03 17:31:40 INFO Loading model from models/timegan_joint-1
+2024-01-03 17:31:40 INFO Start Embedding Network Training
+2024-01-03 17:31:50 INFO step: 0/1, e_loss: 0.1294
+2024-01-03 17:31:51 INFO Finish Embedding Network Training
+2024-01-03 17:31:51 INFO Start Training with Supervised Loss Only
+2024-01-03 17:31:56 INFO step: 0/1, s_loss: 0.0305
+2024-01-03 17:31:57 INFO Finish Training with Supervised Loss Only
+2024-01-03 17:31:57 INFO Start Joint Training
+2024-01-03 17:33:38 INFO step: 0/1, d_loss: 1.927, g_loss_u: 1.2064, g_loss_s: 0.0271, g_loss_v: 0.1523, e_loss_t0: 0.1284
+2024-01-03 17:33:38 INFO Finish Joint Training
+2024-01-03 17:33:39 INFO after training
+2024-01-03 17:33:39 INFO after random generator
+2024-01-03 17:33:46 INFO after generated_data_curr
+2024-01-03 17:33:46 INFO after append
+2024-01-03 17:33:46 INFO <class 'numpy.ndarray'>
+2024-01-03 17:33:46 INFO None
+2024-01-03 17:33:46 INFO Finish Synthetic Data Generation
+2024-01-03 17:39:24 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 5}
+2024-01-03 17:39:24 INFO gear_signals dataset is ready.
+2024-01-03 17:39:38 INFO Loading model from models/timegan_joint-1
+2024-01-03 17:39:39 INFO after random generator
+2024-01-03 17:39:46 INFO after generated_data_curr
+2024-01-03 17:39:46 INFO after append
+2024-01-03 17:39:46 INFO <class 'numpy.ndarray'>
+2024-01-03 17:39:46 INFO None
+2024-01-03 17:39:46 INFO Finish Synthetic Data Generation
+2024-01-03 17:39:49 INFO PCA plot saved to: plots/20240103_173949_PCA_plot.png
+2024-01-03 17:40:05 INFO t-SNE plot saved to: plots/20240103_174005_t-SNE_plot.png
+2024-01-03 17:40:06 INFO {}
+2024-01-03 18:07:24 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 5}
+2024-01-03 18:07:24 INFO gear_signals dataset is ready.
+2024-01-03 18:07:38 INFO Loading model from models/timegan_joint-1
+2024-01-03 18:07:39 INFO after random generator
+2024-01-03 18:07:45 INFO after generated_data_curr
+2024-01-03 18:07:45 INFO after append
+2024-01-03 18:07:45 INFO Finish Synthetic Data Generation

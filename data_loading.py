@@ -94,7 +94,7 @@ def load_specific_data(base_path, feat_number, torque, rpm):
     data = scipy.io.loadmat(file_path)
     return data['Data']
 
-def load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm):
+def load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm, percentage):
     """
     Load multiple datasets based on a list of feature numbers, torque, and rpm.
 
@@ -103,6 +103,7 @@ def load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm):
       - feat_numbers: A list of feature numbers (e.g., ['Feat0', 'Feat1', ...]).
       - torque: The torque value.
       - rpm: The rpm value.
+      - percentage: The percentage of the dataset to return (0-100).
 
     Returns:
       - data: NumPy ndarray containing loaded datasets in different columns.
@@ -115,9 +116,15 @@ def load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm):
         all_data.append(data)
 
     combined_data = np.hstack(all_data)
-    return combined_data
 
-def real_data_loading (data_name, seq_len, base_path=None, feat_numbers=None, exp_number=None, torque=None, rpm=None):
+    # Calculate the number of rows to include based on the percentage
+    num_rows = int(combined_data.shape[0] * (percentage / 100))
+    # Slice the dataset to include only the specified percentage
+    subset_data = combined_data[:num_rows, :]
+
+    return subset_data
+
+def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat_numbers=None, exp_number=None, torque=None, rpm=None):
   """Load and preprocess real-world datasets.
   
   Args:
@@ -141,7 +148,7 @@ def real_data_loading (data_name, seq_len, base_path=None, feat_numbers=None, ex
      # Ensure feat_numbers is a list
       if not isinstance(feat_numbers, list):
           feat_numbers = [feat_numbers]
-      ori_data = load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm)
+      ori_data = load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm, percentage)
     
   # Flip the data to make chronological data
   ori_data = ori_data[::-1]

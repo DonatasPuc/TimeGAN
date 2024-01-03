@@ -1,0 +1,8 @@
+2024-01-03 17:10:26,561 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 50000, 'batch_size': 128, 'metric_iteration': 10, 'logfile': 'timegan.log', 'feature_number': 'Feat0', 'dataset_percentage': 5}
+Traceback (most recent call last):
+  File "main_timegan.py", line 194, in <module>
+    ori_data, generated_data, metrics = main(args)
+  File "main_timegan.py", line 81, in main
+    ori_data = real_data_loading("gear_signals", args.seq_len, base_path="data", percentage=args.percentage, feat_numbers=[args.feature_number], exp_number="1", torque="75", rpm="3000")
+AttributeError: 'Namespace' object has no attribute 'percentage'
+/var/lib/slurm-llnl/slurmd/job28384/slurm_script: 17: --module: not found

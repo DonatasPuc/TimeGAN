@@ -1,0 +1,10 @@
+usage: main_timegan.py [-h] [--data_name {sine,stock,energy,gear_signals}]
+                       [--seq_len SEQ_LEN] [--module {gru,lstm,lstmLN}]
+                       [--hidden_dim HIDDEN_DIM] [--num_layer NUM_LAYER]
+                       [--iteration ITERATION] [--batch_size BATCH_SIZE]
+                       [--metric_iteration METRIC_ITERATION]
+                       [--logfile LOGFILE]
+                       [--feature_number {Feat0,Feat1,Feat2,Feat3,Feat4,Feat5,Feat6}]
+                       [--dataset_percentage DATASET_PERCENTAGE]
+main_timegan.py: error: unrecognized arguments: --percentage 5
+/var/lib/slurm-llnl/slurmd/job28383/slurm_script: 17: --module: not found
