@@ -1,0 +1,73 @@
+2024-01-03 18:30:53,794 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 2560, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 5}
+2024-01-03 18:30:53,813 INFO gear_signals dataset is ready.
+2024-01-03 18:31:05.389503: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2024-01-03 18:31:05.469346: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:8a:00.0
+2024-01-03 18:31:05.470446: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 18:31:05.472513: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 18:31:05.474327: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-03 18:31:05.475176: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-03 18:31:05.477334: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-03 18:31:05.479240: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-03 18:31:05.483657: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-03 18:31:05.484704: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-03 18:31:05.485060: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2024-01-03 18:31:05.493620: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2195035000 Hz
+2024-01-03 18:31:05.493809: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x559165d08ff0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2024-01-03 18:31:05.493861: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2024-01-03 18:31:05.683120: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x559164cc8f10 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-01-03 18:31:05.683277: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla V100-SXM2-32GB, Compute Capability 7.0
+2024-01-03 18:31:05.683859: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:8a:00.0
+2024-01-03 18:31:05.683971: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 18:31:05.684024: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 18:31:05.684071: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-03 18:31:05.684117: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-03 18:31:05.684164: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-03 18:31:05.684210: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-03 18:31:05.684258: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-03 18:31:05.685184: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-03 18:31:05.685310: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-03 18:31:05.685862: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-03 18:31:05.685960: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2024-01-03 18:31:05.686000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2024-01-03 18:31:05.686983: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:8a:00.0, compute capability: 7.0)
+2024-01-03 18:31:07,575 INFO Loading model from models/timegan_joint-1
+2024-01-03 18:31:08,716 INFO after random generator
+2024-01-03 18:31:09.323270: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-03 18:31:14,910 INFO after generated_data_curr
+2024-01-03 18:31:14,914 INFO after append
+2024-01-03 18:31:15,150 INFO Finish Synthetic Data Generation
+2024-01-03 18:31:15,213 INFO Information about Original Data:
+2024-01-03 18:31:15,213 INFO   Shape: (10240, 2560, 1)
+2024-01-03 18:31:15,213 INFO   Data Type: float64
+2024-01-03 18:31:15,213 INFO   Size: 26214400
+2024-01-03 18:31:15,213 INFO   Number of Dimensions: 3
+2024-01-03 18:31:15,213 INFO   Item Size: 8 bytes
+2024-01-03 18:31:15,232 INFO   Minimum Value: 0.0
+2024-01-03 18:31:15,250 INFO   Maximum Value: 0.9999998028565962
+2024-01-03 18:31:15,267 INFO   Mean: 0.4488566525343859
+2024-01-03 18:31:15,399 INFO   Standard Deviation: 0.12523362111105427
+2024-01-03 18:31:15,399 INFO  
+2024-01-03 18:31:15,399 INFO Information about Generated Data:
+2024-01-03 18:31:15,399 INFO   Shape: (10240, 2560, 1)
+2024-01-03 18:31:15,399 INFO   Data Type: float64
+2024-01-03 18:31:15,399 INFO   Size: 26214400
+2024-01-03 18:31:15,399 INFO   Number of Dimensions: 3
+2024-01-03 18:31:15,399 INFO   Item Size: 8 bytes
+2024-01-03 18:31:15,417 INFO   Minimum Value: 0.4745510179051107
+2024-01-03 18:31:15,435 INFO   Maximum Value: 0.4988513499522281
+2024-01-03 18:31:15,452 INFO   Mean: 0.48403088233870917
+2024-01-03 18:31:15,584 INFO   Standard Deviation: 0.000978184480485225
+2024-01-03 18:31:15,584 INFO  
+Traceback (most recent call last):
+  File "main_timegan.py", line 220, in <module>
+    ori_data, generated_data, metrics = main(args)
+  File "main_timegan.py", line 137, in main
+    np.savetxt('combined_arrays.csv', combined_array, delimiter=' ', fmt='%.6f')
+  File "<__array_function__ internals>", line 6, in savetxt
+  File "/scratch/lustre/home/dopu7482/miniconda3/envs/kursinis/lib/python3.7/site-packages/numpy/lib/npyio.py", line 1383, in savetxt
+    "Expected 1D or 2D array, got %dD array instead" % X.ndim)
+ValueError: Expected 1D or 2D array, got 3D array instead

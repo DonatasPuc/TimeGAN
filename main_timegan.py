@@ -81,6 +81,8 @@ def main (args):
     ori_data = real_data_loading("gear_signals", args.seq_len, base_path="data", percentage=args.dataset_percentage, feat_numbers=[args.feature_number], exp_number="1", torque="75", rpm="3000")
     
   logging.info(args.data_name + ' dataset is ready.')
+
+  print_array_info(np.asarray(ori_data), "Original Data after loading")
     
   ## Synthetic data generation by TimeGAN
   # Set newtork parameters
@@ -127,9 +129,30 @@ def main (args):
   ori_data = np.asarray(ori_data)
   generated_data = np.asarray(generated_data)  
 
-  np.savetxt('arrays.csv', np.vstack((ori_data, generated_data)), delimiter=',', fmt='%d')
+  print_array_info(ori_data, "Original Data after generation")
+  print_array_info(generated_data, "Generated Data")
+
+  # Stack arrays vertically (as columns)
+  combined_array = np.column_stack((ori_data, generated_data))
+
+  # Save to a CSV file
+  np.savetxt('combined_arrays.csv', combined_array, delimiter=' ', fmt='%.6f')
 
   return ori_data, generated_data, metric_results
+
+
+def print_array_info(array, name):
+    print(f"Information about {name}:")
+    print(f"  Shape: {array.shape}")
+    print(f"  Data Type: {array.dtype}")
+    print(f"  Size: {array.size}")
+    print(f"  Number of Dimensions: {array.ndim}")
+    print(f"  Item Size: {array.itemsize} bytes")
+    print(f"  Minimum Value: {np.min(array)}")
+    print(f"  Maximum Value: {np.max(array)}")
+    print(f"  Mean: {np.mean(array)}")
+    print(f"  Standard Deviation: {np.std(array)}")
+    print(" ")
 
 
 if __name__ == '__main__':  
