@@ -3,3 +3,4 @@ test_gpu_tf.sh
 test_tf.py
 **/__pycache__/
 data/
+generated_data/

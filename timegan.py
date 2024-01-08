@@ -252,7 +252,7 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
   #   # Train embedder        
   #   _, step_e_loss = sess.run([E0_solver, E_loss_T0], feed_dict={X: X_mb, T: T_mb})        
   #   # Checkpoint
-  #   if itt % 250 == 0:
+  #   if itt % save_interval == 0:
   #     logging.info('step: '+ str(itt) + '/' + str(iterations) + ', e_loss: ' + str(np.round(np.sqrt(step_e_loss),4)) ) 
   #   if itt % save_interval == 0:
   #     saver.save(sess, os.path.join(save_dir, 'timegan_embedding'), global_step=itt)
@@ -270,7 +270,7 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
   #   # Train generator       
   #   _, step_g_loss_s = sess.run([GS_solver, G_loss_S], feed_dict={Z: Z_mb, X: X_mb, T: T_mb})       
   #   # Checkpoint
-  #   if itt % 250 == 0:
+  #   if itt % save_interval == 0:
   #     logging.info('step: '+ str(itt)  + '/' + str(iterations) +', s_loss: ' + str(np.round(np.sqrt(step_g_loss_s),4)) )
   #   if itt % save_interval == 0:
   #     saver.save(sess, os.path.join(save_dir, 'timegan_supervised'), global_step=itt)
@@ -278,9 +278,9 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
   # logging.info('Finish Training with Supervised Loss Only')
     
   # # 3. Joint Training
-  # logging.info('Start Joint Training')
+  # # logging.info('Start Joint Training')
   
-  # for itt in range(iterations):
+  # for itt in range(500, iterations + 1):
   #   # Generator training (twice more than discriminator training)
   #   for kk in range(2):
   #     # Set mini-batch
@@ -304,7 +304,7 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
   #     _, step_d_loss = sess.run([D_solver, D_loss], feed_dict={X: X_mb, T: T_mb, Z: Z_mb})
         
   #   # Print multiple checkpoints
-  #   if itt % 250 == 0:
+  #   if itt % save_interval == 0:
   #     logging.info('step: '+ str(itt) + '/' + str(iterations) + 
   #           ', d_loss: ' + str(np.round(step_d_loss,4)) + 
   #           ', g_loss_u: ' + str(np.round(step_g_loss_u,4)) + 
@@ -321,13 +321,10 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
     
   ## Synthetic data generation
   Z_mb = random_generator(no, z_dim, ori_time, max_seq_len)
-  logging.info("after random generator")
-
-  # logging.info("Shape of Z_mb:", tf.shape(Z_mb))
-  # logging.info("Shape of ori_time:", tf.shape(ori_time))
+  # logging.info("after random generator")
 
   generated_data_curr = sess.run(X_hat, feed_dict={Z: Z_mb, X: ori_data, T: ori_time})    
-  logging.info("after generated_data_curr")
+  # logging.info("after generated_data_curr")
     
   generated_data = list()
     
@@ -335,7 +332,7 @@ def timegan (ori_data, parameters, save_dir, load_dir=None, save_interval=100):
     temp = generated_data_curr[i,:ori_time[i],:]
     generated_data.append(temp)
 
-  logging.info("after append")
+  # logging.info("after append")
         
   # Renormalization
   generated_data = generated_data * max_val

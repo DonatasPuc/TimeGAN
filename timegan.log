@@ -354,3 +354,94 @@
 2024-01-03 18:39:30 INFO   Mean: 0.4840308187443822
 2024-01-03 18:39:31 INFO   Standard Deviation: 0.0009783060174064137
 2024-01-03 18:39:31 INFO  
+2024-01-07 20:29:13 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-07 20:29:13 INFO gear_signals dataset is ready.
+2024-01-07 20:29:34 INFO No model found in load_dir. Starting training from scratch.
+2024-01-07 20:29:34 INFO Start Embedding Network Training
+2024-01-07 20:29:37 INFO step: 0/1, e_loss: 0.196
+2024-01-07 20:29:39 INFO Finish Embedding Network Training
+2024-01-07 20:29:39 INFO Start Training with Supervised Loss Only
+2024-01-07 20:29:40 INFO step: 0/1, s_loss: 0.0909
+2024-01-07 20:29:41 INFO Finish Training with Supervised Loss Only
+2024-01-07 20:29:41 INFO Start Joint Training
+2024-01-07 20:30:00 INFO step: 0/1, d_loss: 2.0152, g_loss_u: 0.7605, g_loss_s: 0.0766, g_loss_v: 0.1756, e_loss_t0: 0.1287
+2024-01-07 20:30:01 INFO Finish Joint Training
+2024-01-07 20:30:01 INFO after training
+2024-01-07 20:30:04 INFO Finish Synthetic Data Generation
+2024-01-07 21:02:35 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1000, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-07 21:02:35 INFO gear_signals dataset is ready.
+2024-01-07 21:02:49 INFO No model found in load_dir. Starting training from scratch.
+2024-01-07 21:02:49 INFO Start Embedding Network Training
+2024-01-07 21:02:52 INFO step: 0/1000, e_loss: 0.1221
+2024-01-07 21:04:20 INFO step: 100/1000, e_loss: 0.1157
+2024-01-07 21:05:53 INFO step: 200/1000, e_loss: 0.0938
+2024-01-07 21:07:24 INFO step: 300/1000, e_loss: 0.0545
+2024-01-07 21:08:55 INFO step: 400/1000, e_loss: 0.0163
+2024-01-07 21:10:23 INFO step: 500/1000, e_loss: 0.0135
+2024-01-07 21:11:50 INFO step: 600/1000, e_loss: 0.0101
+2024-01-07 21:13:20 INFO step: 700/1000, e_loss: 0.0083
+2024-01-07 21:14:52 INFO step: 800/1000, e_loss: 0.0071
+2024-01-07 21:16:24 INFO step: 900/1000, e_loss: 0.0072
+2024-01-07 21:17:55 INFO Finish Embedding Network Training
+2024-01-07 21:17:55 INFO Start Training with Supervised Loss Only
+2024-01-07 21:17:56 INFO step: 0/1000, s_loss: 0.162
+2024-01-07 21:18:48 INFO step: 100/1000, s_loss: 0.0323
+2024-01-07 21:19:39 INFO step: 200/1000, s_loss: 0.0271
+2024-01-07 21:20:31 INFO step: 300/1000, s_loss: 0.026
+2024-01-07 21:21:22 INFO step: 400/1000, s_loss: 0.0255
+2024-01-07 21:22:14 INFO step: 500/1000, s_loss: 0.0251
+2024-01-07 21:23:05 INFO step: 600/1000, s_loss: 0.025
+2024-01-07 21:23:57 INFO step: 700/1000, s_loss: 0.0242
+2024-01-07 21:24:49 INFO step: 800/1000, s_loss: 0.024
+2024-01-07 21:25:40 INFO step: 900/1000, s_loss: 0.0233
+2024-01-07 21:26:31 INFO Finish Training with Supervised Loss Only
+2024-01-07 21:26:31 INFO Start Joint Training
+2024-01-07 21:26:48 INFO step: 0/1000, d_loss: 2.3612, g_loss_u: 0.5445, g_loss_s: 0.0643, g_loss_v: 0.1677, e_loss_t0: 0.0905
+2024-01-07 21:43:41 INFO step: 100/1000, d_loss: 1.8796, g_loss_u: 1.0743, g_loss_s: 0.024, g_loss_v: 0.0224, e_loss_t0: 0.0054
+2024-01-07 22:00:31 INFO step: 200/1000, d_loss: 1.9908, g_loss_u: 1.4214, g_loss_s: 0.026, g_loss_v: 0.0213, e_loss_t0: 0.0044
+2024-01-07 22:17:28 INFO step: 300/1000, d_loss: 1.8513, g_loss_u: 1.0714, g_loss_s: 0.0292, g_loss_v: 0.0207, e_loss_t0: 0.0045
+2024-01-07 22:34:26 INFO step: 400/1000, d_loss: 1.8607, g_loss_u: 1.043, g_loss_s: 0.0304, g_loss_v: 0.0215, e_loss_t0: 0.0027
+2024-01-07 22:51:21 INFO step: 500/1000, d_loss: 1.8355, g_loss_u: 1.0202, g_loss_s: 0.0317, g_loss_v: 0.0191, e_loss_t0: 0.0055
+2024-01-07 23:36:11 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1000, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-07 23:36:11 INFO gear_signals dataset is ready.
+2024-01-07 23:36:31 INFO Loading model from models/timegan_joint-500
+2024-01-07 23:36:36 INFO Finish Synthetic Data Generation
+2024-01-07 23:36:37 INFO PCA plot saved to: plots/20240107_233637_PCA_plot.png
+2024-01-07 23:37:31 INFO t-SNE plot saved to: plots/20240107_233731_t-SNE_plot.png
+2024-01-07 23:37:32 INFO {}
+2024-01-07 23:57:24 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1000, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-07 23:57:24 INFO gear_signals dataset is ready.
+2024-01-07 23:57:39 INFO Loading model from models/timegan_joint-500
+2024-01-07 23:57:57 INFO step: 500/1000, d_loss: 1.8307, g_loss_u: 1.0187, g_loss_s: 0.034, g_loss_v: 0.0181, e_loss_t0: 0.0089
+2024-01-08 00:15:20 INFO step: 600/1000, d_loss: 2.0356, g_loss_u: 0.869, g_loss_s: 0.0316, g_loss_v: 0.0198, e_loss_t0: 0.0034
+2024-01-08 00:32:45 INFO step: 700/1000, d_loss: 1.8108, g_loss_u: 1.1024, g_loss_s: 0.0314, g_loss_v: 0.019, e_loss_t0: 0.0037
+2024-01-08 00:50:11 INFO step: 800/1000, d_loss: 1.9923, g_loss_u: 0.8587, g_loss_s: 0.0318, g_loss_v: 0.0195, e_loss_t0: 0.0037
+2024-01-08 01:07:35 INFO step: 900/1000, d_loss: 1.936, g_loss_u: 1.0879, g_loss_s: 0.0305, g_loss_v: 0.0188, e_loss_t0: 0.0036
+2024-01-08 01:24:58 INFO step: 1000/1000, d_loss: 1.9456, g_loss_u: 0.9041, g_loss_s: 0.0308, g_loss_v: 0.0172, e_loss_t0: 0.003
+2024-01-08 01:24:59 INFO Finish Joint Training
+2024-01-08 01:25:00 INFO after training
+2024-01-08 01:25:03 INFO Finish Synthetic Data Generation
+2024-01-08 01:53:34 INFO PCA plot saved to: plots/20240108_015334_PCA_plot.png
+2024-01-08 01:54:23 INFO t-SNE plot saved to: plots/20240108_015423_t-SNE_plot.png
+2024-01-08 01:54:23 INFO {'discriminative': 0.0, 'predictive': 0.09313536261249482}
+2024-01-08 20:53:17 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1000, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-08 20:53:18 INFO gear_signals dataset is ready.
+2024-01-08 20:53:37 INFO Loading model from models/timegan_joint-600
+2024-01-08 20:53:41 INFO Finish Synthetic Data Generation
+2024-01-08 20:53:42 INFO PCA plot saved to: plots/20240108_205342_PCA_plot.png
+2024-01-08 20:54:30 INFO t-SNE plot saved to: plots/20240108_205430_t-SNE_plot.png
+2024-01-08 20:54:31 INFO {}
+2024-01-08 20:55:39 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1000, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-08 20:55:39 INFO gear_signals dataset is ready.
+2024-01-08 20:55:54 INFO Loading model from models/timegan_joint-400
+2024-01-08 20:55:57 INFO Finish Synthetic Data Generation
+2024-01-08 20:55:58 INFO PCA plot saved to: plots/20240108_205558_PCA_plot.png
+2024-01-08 20:56:47 INFO t-SNE plot saved to: plots/20240108_205647_t-SNE_plot.png
+2024-01-08 20:56:47 INFO {}
+2024-01-08 21:00:34 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 1000, 'batch_size': 128, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25}
+2024-01-08 21:00:34 INFO gear_signals dataset is ready.
+2024-01-08 21:00:48 INFO Loading model from models/timegan_joint-400
+2024-01-08 21:00:52 INFO Finish Synthetic Data Generation
+2024-01-08 21:27:20 INFO PCA plot saved to: plots/20240108_212720_PCA_plot.png
+2024-01-08 21:28:09 INFO t-SNE plot saved to: plots/20240108_212809_t-SNE_plot.png
+2024-01-08 21:28:10 INFO {'discriminative': 0.0, 'predictive': 0.09315085342249516}

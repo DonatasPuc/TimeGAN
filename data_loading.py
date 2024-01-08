@@ -101,20 +101,18 @@ def sine_data_generation (no, seq_len, dim):
                 
   return data
     
-def load_specific_data(base_path, feat_number, torque, rpm):
+def load_synthetic_data(base_path, filename):
     """
     Load specific dataset based on feature number, torque, and rpm.
 
     Args:
       - base_path: The base path where the datasets are located.
-      - feat_number: The feature number (e.g., Feat0, Feat1, etc.).
-      - torque: The torque value.
-      - rpm: The rpm value.
+      - filename: The name of the data file.
 
     Returns:
       - data: Loaded dataset.
     """
-    file_path = f"{base_path}/gear_signals/{feat_number}/1 bandymas/{torque}/{rpm}/5.mat"
+    file_path = f"{base_path}/{filename}.mat"
     data = scipy.io.loadmat(file_path)
     return data['Data']
 
@@ -148,7 +146,7 @@ def load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm, per
 
     return subset_data
 
-def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat_numbers=None, exp_number=None, torque=None, rpm=None):
+def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat_numbers=None, exp_number=None, torque=None, rpm=None, synthetic_data_file=None):
   """Load and preprocess real-world datasets.
   
   Args:
@@ -162,7 +160,7 @@ def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat
   Returns:
     - data: preprocessed data.
   """  
-  assert data_name in ['stock', 'energy', 'gear_signals']
+  assert data_name in ['stock', 'energy', 'gear_signals', 'synth_gear_signals']
   
   if data_name == 'stock':
     ori_data = np.loadtxt('data/stock_data.csv', delimiter = ",",skiprows = 1)
@@ -173,6 +171,8 @@ def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat
       if not isinstance(feat_numbers, list):
           feat_numbers = [feat_numbers]
       ori_data = load_multiple_features(base_path, feat_numbers, exp_number, torque, rpm, percentage)
+  elif data_name == 'synth_gear_signals':
+     ori_data = load_synthetic_data('generated_data', synthetic_data_file)
     
   # Flip the data to make chronological data
   ori_data = ori_data[::-1]
@@ -185,6 +185,8 @@ def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat
   for i in range(0, len(ori_data) - seq_len):
     _x = ori_data[i:i + seq_len]
     temp_data.append(_x)
+
+  return temp_data
         
   # Mix the datasets (to make it similar to i.i.d)
   idx = np.random.permutation(len(temp_data))    
@@ -212,10 +214,22 @@ def reconstruct_data(generated_data, seq_len):
   reconstructed_data = [sequence[0] for sequence in reconstructed_sequences]
 
   # Append the last few elements of the last sequence
-  num_elements_to_append = min(seq_len, len(generated_data[-1]))
-  reconstructed_data.extend(generated_data[-1][-num_elements_to_append:])
+  num_elements_to_append = min(seq_len, len(reconstructed_sequences[-1]))
+  reconstructed_data.extend(reconstructed_sequences[-1][-num_elements_to_append:])
 
   # Convert to numpy array and flip to original order
   reconstructed_data = np.array(reconstructed_data)[::-1]
 
   return reconstructed_data
+
+def save_ndarray_to_mat(array, filename):
+    """
+    Saves an ndarray to a .mat file.
+
+    Parameters:
+    array (np.ndarray): The ndarray to save.
+    filename (str): The name of the file to which the array is saved. Should include the .mat extension.
+    """
+    data = {'Data': array}
+    # Save the dictionary to a .mat file
+    scipy.io.savemat(f"generated_data/{filename}.mat", data)

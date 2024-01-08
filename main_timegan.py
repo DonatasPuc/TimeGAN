@@ -30,6 +30,7 @@ import argparse
 import logging
 import numpy as np
 import warnings
+from datetime import datetime
 from log_config import setup_logging
 warnings.filterwarnings("ignore")
 
@@ -37,7 +38,7 @@ warnings.filterwarnings("ignore")
 # 1. TimeGAN model
 from timegan import timegan
 # 2. Data loading
-from data_loading import real_data_loading, sine_data_generation
+from data_loading import real_data_loading, sine_data_generation, save_ndarray_to_mat
 # 3. Metrics
 from metrics.discriminative_metrics import discriminative_score_metrics
 from metrics.predictive_metrics import predictive_score_metrics
@@ -81,8 +82,6 @@ def main (args):
     ori_data = real_data_loading("gear_signals", args.seq_len, base_path="data", percentage=args.dataset_percentage, feat_numbers=[args.feature_number], exp_number="1", torque="75", rpm="3000")
     
   logging.info(args.data_name + ' dataset is ready.')
-
-  print_array_info(np.asarray(ori_data), "Original Data after loading")
     
   ## Synthetic data generation by TimeGAN
   # Set newtork parameters
@@ -95,64 +94,51 @@ def main (args):
       
   generated_data = timegan(ori_data, parameters, 'models', 'models', 100)
   logging.info('Finish Synthetic Data Generation')
+
+  save_ndarray_to_mat(generated_data, f'feat3_25prc_75_3000_synth_{datetime.now().strftime("%Y%m%d_%H%M%S")}')
   
   ## Performance metrics   
   # Output initialization
   metric_results = dict()
   
-  # # 1. Discriminative Score
-  # discriminative_score = list()
-  # for _ in range(args.metric_iteration):
-  #   temp_disc = discriminative_score_metrics(ori_data, generated_data)
-  #   discriminative_score.append(temp_disc)
+  # 1. Discriminative Score
+  discriminative_score = list()
+  for _ in range(args.metric_iteration):
+    temp_disc = discriminative_score_metrics(ori_data, generated_data)
+    discriminative_score.append(temp_disc)
       
-  # metric_results['discriminative'] = np.mean(discriminative_score)
+  metric_results['discriminative'] = np.mean(discriminative_score)
       
-  # # 2. Predictive score
-  # predictive_score = list()
-  # for tt in range(args.metric_iteration):
-  #   temp_pred = predictive_score_metrics(ori_data, generated_data)
-  #   predictive_score.append(temp_pred)   
+  # 2. Predictive score
+  predictive_score = list()
+  for tt in range(args.metric_iteration):
+    temp_pred = predictive_score_metrics(ori_data, generated_data)
+    predictive_score.append(temp_pred)   
       
-  # metric_results['predictive'] = np.mean(predictive_score)     
+  metric_results['predictive'] = np.mean(predictive_score)     
           
-  # # 3. Visualization (PCA and tSNE)
-  # visualization(ori_data, generated_data, 'pca', plot_synthetic=True)
-  # visualization(ori_data, generated_data, 'tsne', plot_synthetic=True)
+  # 3. Visualization (PCA and tSNE)
+  visualization(ori_data, generated_data, 'pca', plot_synthetic=True)
+  visualization(ori_data, generated_data, 'tsne', plot_synthetic=True)
   
-  # ## Print discriminative and predictive scores
-  # logging.info(metric_results)
-
-  # print(generated_data)
-
-  # Data preprocessing
-  ori_data = np.asarray(ori_data)
-  generated_data = np.asarray(generated_data)  
-
-  print_array_info(ori_data, "Original Data after generation")
-  print_array_info(generated_data, "Generated Data")
-
-  # Stack arrays vertically (as columns)
-  combined_array = np.column_stack((ori_data, generated_data))
-
-  # Save to a CSV file
-  np.savetxt('combined_arrays.csv', combined_array, delimiter=' ', fmt='%.6f')
+  ## Print discriminative and predictive scores
+  logging.info(metric_results)
 
   return ori_data, generated_data, metric_results
 
 
-def print_array_info(array, name):
-    print(f"Information about {name}:")
-    print(f"  Shape: {array.shape}")
-    print(f"  Data Type: {array.dtype}")
-    print(f"  Size: {array.size}")
-    print(f"  Number of Dimensions: {array.ndim}")
-    print(f"  Item Size: {array.itemsize} bytes")
-    print(f"  Minimum Value: {np.min(array)}")
-    print(f"  Maximum Value: {np.max(array)}")
-    print(f"  Mean: {np.mean(array)}")
-    print(f"  Standard Deviation: {np.std(array)}")
-    print(" ")
+# def print_array_info(array, name):
+#     print(f"Information about {name}:")
+#     print(f"  Shape: {array.shape}")
+#     print(f"  Data Type: {array.dtype}")
+#     print(f"  Size: {array.size}")
+#     print(f"  Number of Dimensions: {array.ndim}")
+#     print(f"  Item Size: {array.itemsize} bytes")
+#     print(f"  Minimum Value: {np.min(array)}")
+#     print(f"  Maximum Value: {np.max(array)}")
+#     print(f"  Mean: {np.mean(array)}")
+#     print(f"  Standard Deviation: {np.std(array)}")
+#     print(" ")
 
 
 if __name__ == '__main__':  
@@ -160,8 +146,8 @@ if __name__ == '__main__':
   # Inputs for the main function
   parser = argparse.ArgumentParser()
   parser.add_argument(
-      '--data_name',
-      choices=['sine','stock','energy','gear_signals'],
+      '--data_name', 
+      choices=['sine','stock','energy','gear_signals', 'synth_gear_signals'],
       default='stock',
       type=str)
   parser.add_argument(
