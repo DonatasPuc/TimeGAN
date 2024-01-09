@@ -91,8 +91,11 @@ sampling_rate = 256000 / 5  # Total number of measurements divided by total dura
 
 # Plotting combined graph for specified features
 # plot_combined(features, 1, sampling_rate)  # Combined plot for 1 second interval
-generated_data_path = 'generated_data/feat3_25prc_75_3000_synth_20240109_123629.mat'
-plot_combined([3], 0.002, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
-plot_combined([3], 0.005, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
-plot_combined([3], 0.02, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
-plot_combined([3], 0.2, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+generated_data_path = 'generated_data/feat3_25prc_75_3000_synth_20240110_000709.mat'
+# plot_combined([3], 0.0025, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+# plot_combined([3], 0.0055, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+# plot_combined([3], 0.025, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+# plot_combined([3], 0.25, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+
+plot_combined([3], 5, sampling_rate, offset=0, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+plot_combined([3], 4.99, sampling_rate, offset=0, additional_features=[{'path': 'generated_data/feat3_25prc_75_3000_synth_20240110_000709_multi.mat', 'label': 'synthetic'}])

@@ -92,9 +92,10 @@ def main (args):
   parameters['iterations'] = args.iteration
   parameters['batch_size'] = args.batch_size
 
-  model_dir = f'{args.model_dir}_{datetime.now().strftime("%m%d_%H%M")}'
+  do_training = args.do_training == 'yes'
+  do_metrics = args.do_metrics == 'yes'
       
-  generated_data = timegan(ori_data, parameters, model_dir, model_dir, 100, args.do_training)
+  generated_data = timegan(ori_data, parameters, args.model_dir, args.model_dir, 100, do_training)
   logging.info('Finish Synthetic Data Generation')
 
   save_ndarray_to_mat(generated_data, f'feat3_25prc_75_3000_synth_{datetime.now().strftime("%Y%m%d_%H%M%S")}')
@@ -103,7 +104,7 @@ def main (args):
   # Output initialization
   metric_results = dict()
   
-  if args.do_metrics:
+  if do_metrics:
     # 1. Discriminative Score
     discriminative_score = list()
     for _ in range(args.metric_iteration):
@@ -128,20 +129,6 @@ def main (args):
   logging.info(metric_results)
 
   return ori_data, generated_data, metric_results
-
-
-# def print_array_info(array, name):
-#     print(f"Information about {name}:")
-#     print(f"  Shape: {array.shape}")
-#     print(f"  Data Type: {array.dtype}")
-#     print(f"  Size: {array.size}")
-#     print(f"  Number of Dimensions: {array.ndim}")
-#     print(f"  Item Size: {array.itemsize} bytes")
-#     print(f"  Minimum Value: {np.min(array)}")
-#     print(f"  Maximum Value: {np.max(array)}")
-#     print(f"  Mean: {np.mean(array)}")
-#     print(f"  Standard Deviation: {np.std(array)}")
-#     print(" ")
 
 
 if __name__ == '__main__':  
@@ -207,13 +194,15 @@ if __name__ == '__main__':
   parser.add_argument(
       '--do_training',
       help='perform or skip (load from trained models) model training',
-      default=True,
-      type=bool)
+      choices=['yes', 'no'],
+      default='yes',
+      type=str)
   parser.add_argument(
       '--do_metrics',
       help='perform or skip metrics',
-      default=True,
-      type=bool)
+      choices=['yes', 'no'],
+      default='yes',
+      type=str)
   parser.add_argument(
       '--model_dir',
       help='load/save directory for model',

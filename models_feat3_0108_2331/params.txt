@@ -1,0 +1,1 @@
+python3 main_timegan.py --model_dir models_feat3_0108_2331 --data_name gear_signals --seq_len 256 --dataset_percentage 25 --module gru --hidden_dim 24 --num_layer 3 --iteration 2000 --batch_size 32 --metric_iteration 1 --feature_number Feat3
