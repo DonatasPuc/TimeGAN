@@ -33,54 +33,50 @@ def plot_data(frequencies, interval, sampling_rate, feat_number):
     plt.savefig(filename)
     plt.close()
 
-def plot_combined(features, interval, sampling_rate, additional_features=None):
+def plot_combined(features, interval, sampling_rate, additional_features=None, offset=0):
     """
-    Combine and plot data from multiple features. Optionally plot additional features from specified file paths.
+    Combine and plot data from multiple features with an option to start at an offset in seconds.
     additional_features should be a list of dictionaries, each containing 'path' and 'label' keys.
     Example: [{'path': 'path/to/feature1.mat', 'label': 'Feature 1'}, {'path': 'path/to/feature2.mat', 'label': 'Feature 2'}]
     """
     plt.figure(figsize=(10, 6))
+    start_index = int(sampling_rate * offset)
+    end_index = start_index + int(sampling_rate * interval)
 
-    # Function to safely load data
     def safe_load_data(path):
         if os.path.exists(path):
-            return scipy.io.loadmat(path)['Data']  # Assuming the data is stored under the key 'data'
+            return scipy.io.loadmat(path)['Data'].flatten()
         else:
             print(f"Warning: File not found at {path}")
             return None
 
-    # Plot the regular features
     for feat_number in features:
         path = f"data/gear_signals/Feat{feat_number}/1 bandymas/75/3000/5.mat"
         data = safe_load_data(path)
         if data is not None:
-            num_points = int(sampling_rate * interval)
-            data_subset = data[:num_points]
-            time = np.linspace(0, interval, num_points)
+            data_subset = data[start_index:end_index]
+            time = np.linspace(offset, offset + interval, len(data_subset))
             plt.plot(time, data_subset, label=f'Feature {feat_number}')
 
-    # Optionally plot additional features
     if additional_features:
         for feature in additional_features:
             additional_data = safe_load_data(feature['path'])
             if additional_data is not None:
-                num_points = int(sampling_rate * interval)
-                data_subset = additional_data[:num_points]
-                time = np.linspace(0, interval, num_points)
+                data_subset = additional_data[start_index:end_index]
+                time = np.linspace(offset, offset + interval, len(data_subset))
                 plt.plot(time, data_subset, label=feature['label'])
 
     plt.xlabel('Time (seconds)')
     plt.ylabel('Frequency')
-    plt.title(f'Combined Frequency vs Time ({interval} second interval)')
+    plt.title(f'Combined Frequency vs Time (Interval: {interval} sec, Offset: {offset} sec)')
     plt.ylim(-0.4, 0.4)
     plt.legend()
     plt.grid(True)
 
-    # Save the plot
     if not os.path.exists('plots_raw'):
         os.makedirs('plots_raw')
     feature_str = '_'.join([f'feat{feat}' for feat in features])
-    filename = f'plots_raw/combined_{feature_str}_{interval}s_interval.png'
+    filename = f'plots_raw/combined_{feature_str}_{interval}s_{offset}s_offset.png'
     plt.savefig(filename)
     plt.close()
 
@@ -95,4 +91,8 @@ sampling_rate = 256000 / 5  # Total number of measurements divided by total dura
 
 # Plotting combined graph for specified features
 # plot_combined(features, 1, sampling_rate)  # Combined plot for 1 second interval
-plot_combined([0], 0.002, sampling_rate, additional_features=[{'path': 'generated_data/feat0_100prc_75_3000.mat', 'label': 'generated'}])
+generated_data_path = 'generated_data/feat3_25prc_75_3000_synth_20240109_123629.mat'
+plot_combined([3], 0.002, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+plot_combined([3], 0.005, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+plot_combined([3], 0.02, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])
+plot_combined([3], 0.2, sampling_rate, offset=1, additional_features=[{'path': generated_data_path, 'label': 'synthetic'}])

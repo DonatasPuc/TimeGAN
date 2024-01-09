@@ -91,8 +91,10 @@ def main (args):
   parameters['num_layer'] = args.num_layer
   parameters['iterations'] = args.iteration
   parameters['batch_size'] = args.batch_size
+
+  model_dir = f'{args.model_dir}_{datetime.now().strftime("%m%d_%H%M")}'
       
-  generated_data = timegan(ori_data, parameters, 'models', 'models', 100)
+  generated_data = timegan(ori_data, parameters, model_dir, model_dir, 100, args.do_training)
   logging.info('Finish Synthetic Data Generation')
 
   save_ndarray_to_mat(generated_data, f'feat3_25prc_75_3000_synth_{datetime.now().strftime("%Y%m%d_%H%M%S")}')
@@ -101,21 +103,22 @@ def main (args):
   # Output initialization
   metric_results = dict()
   
-  # 1. Discriminative Score
-  discriminative_score = list()
-  for _ in range(args.metric_iteration):
-    temp_disc = discriminative_score_metrics(ori_data, generated_data)
-    discriminative_score.append(temp_disc)
-      
-  metric_results['discriminative'] = np.mean(discriminative_score)
-      
-  # 2. Predictive score
-  predictive_score = list()
-  for tt in range(args.metric_iteration):
-    temp_pred = predictive_score_metrics(ori_data, generated_data)
-    predictive_score.append(temp_pred)   
-      
-  metric_results['predictive'] = np.mean(predictive_score)     
+  if args.do_metrics:
+    # 1. Discriminative Score
+    discriminative_score = list()
+    for _ in range(args.metric_iteration):
+      temp_disc = discriminative_score_metrics(ori_data, generated_data)
+      discriminative_score.append(temp_disc)
+        
+    metric_results['discriminative'] = np.mean(discriminative_score)
+        
+    # 2. Predictive score
+    predictive_score = list()
+    for tt in range(args.metric_iteration):
+      temp_pred = predictive_score_metrics(ori_data, generated_data)
+      predictive_score.append(temp_pred)   
+        
+    metric_results['predictive'] = np.mean(predictive_score)     
           
   # 3. Visualization (PCA and tSNE)
   visualization(ori_data, generated_data, 'pca', plot_synthetic=True)
@@ -201,6 +204,21 @@ if __name__ == '__main__':
       help='load only the specified percentage of data from the original dataset',
       default=10,
       type=int)
+  parser.add_argument(
+      '--do_training',
+      help='perform or skip (load from trained models) model training',
+      default=True,
+      type=bool)
+  parser.add_argument(
+      '--do_metrics',
+      help='perform or skip metrics',
+      default=True,
+      type=bool)
+  parser.add_argument(
+      '--model_dir',
+      help='load/save directory for model',
+      default='models',
+      type=str)
   
   args = parser.parse_args()
   

@@ -1,0 +1,6 @@
+model_checkpoint_path: "timegan_joint-2000"
+all_model_checkpoint_paths: "timegan_joint-1600"
+all_model_checkpoint_paths: "timegan_joint-1700"
+all_model_checkpoint_paths: "timegan_joint-1800"
+all_model_checkpoint_paths: "timegan_joint-1900"
+all_model_checkpoint_paths: "timegan_joint-2000"

@@ -177,7 +177,7 @@ def real_data_loading (data_name, seq_len, percentage=None, base_path=None, feat
   # Flip the data to make chronological data
   ori_data = ori_data[::-1]
   # Normalize the data
-  ori_data = MinMaxScaler(ori_data)
+  # ori_data = MinMaxScaler(ori_data)
     
   # Preprocess the dataset
   temp_data = []    
@@ -208,9 +208,9 @@ def reconstruct_data(generated_data, seq_len):
     - reconstructed_data: Data reconstructed to the scale and order of the original data.
   """
   # Inverse normalization for each sequence
-  reconstructed_sequences = [inverse_MinMaxScaler(sequence) for sequence in generated_data]
-
- # Extract the first value from each sequence
+  # reconstructed_sequences = [inverse_MinMaxScaler(sequence) for sequence in generated_data]
+  reconstructed_sequences = generated_data
+  # Extract the first value from each sequence
   reconstructed_data = [sequence[0] for sequence in reconstructed_sequences]
 
   # Append the last few elements of the last sequence

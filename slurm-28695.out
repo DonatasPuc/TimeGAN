@@ -1,0 +1,146 @@
+2024-01-08 23:31:27,441 INFO Started with the following arguments: {'data_name': 'gear_signals', 'seq_len': 256, 'module': 'gru', 'hidden_dim': 24, 'num_layer': 3, 'iteration': 2000, 'batch_size': 32, 'metric_iteration': 1, 'logfile': 'timegan.log', 'feature_number': 'Feat3', 'dataset_percentage': 25, 'do_training': True, 'do_metrics': True, 'model_dir': 'models_feat3'}
+2024-01-08 23:31:27,475 INFO gear_signals dataset is ready.
+2024-01-08 23:31:39.454296: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2024-01-08 23:31:39.533026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:0b:00.0
+2024-01-08 23:31:39.534472: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-08 23:31:39.536665: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-08 23:31:39.538574: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-08 23:31:39.539686: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-08 23:31:39.542109: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-08 23:31:39.543925: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-08 23:31:39.548887: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-08 23:31:39.550026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-08 23:31:39.550478: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2024-01-08 23:31:39.558679: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2195035000 Hz
+2024-01-08 23:31:39.558927: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55d7872bc100 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2024-01-08 23:31:39.558983: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2024-01-08 23:31:39.776477: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55d786087c90 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-01-08 23:31:39.776636: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla V100-SXM2-32GB, Compute Capability 7.0
+2024-01-08 23:31:39.777267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:0b:00.0
+2024-01-08 23:31:39.777392: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-08 23:31:39.777449: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-08 23:31:39.777500: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-08 23:31:39.777550: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-08 23:31:39.777600: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-08 23:31:39.777650: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-08 23:31:39.777701: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-08 23:31:39.778726: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-08 23:31:39.778811: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-08 23:31:39.779444: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-08 23:31:39.779524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2024-01-08 23:31:39.779564: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2024-01-08 23:31:39.780637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:0b:00.0, compute capability: 7.0)
+2024-01-08 23:31:41,847 INFO No model found in load_dir. Starting training from scratch.
+2024-01-08 23:31:41,852 INFO Start Embedding Network Training
+2024-01-08 23:31:43.327810: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-08 23:31:44,428 INFO step: 0/2000, e_loss: 0.1247
+2024-01-08 23:33:13,464 INFO step: 100/2000, e_loss: 0.1144
+2024-01-08 23:34:42,479 INFO step: 200/2000, e_loss: 0.1031
+2024-01-08 23:36:11,032 INFO step: 300/2000, e_loss: 0.0912
+2024-01-08 23:37:39,762 INFO step: 400/2000, e_loss: 0.0695
+2024-01-08 23:39:08,271 INFO step: 500/2000, e_loss: 0.0149
+2024-01-08 23:40:36,860 INFO step: 600/2000, e_loss: 0.0115
+2024-01-08 23:42:05,470 INFO step: 700/2000, e_loss: 0.0108
+2024-01-08 23:43:33,558 INFO step: 800/2000, e_loss: 0.0083
+2024-01-08 23:45:02,094 INFO step: 900/2000, e_loss: 0.0074
+2024-01-08 23:46:31,273 INFO step: 1000/2000, e_loss: 0.0055
+2024-01-08 23:47:59,904 INFO step: 1100/2000, e_loss: 0.0059
+2024-01-08 23:49:28,486 INFO step: 1200/2000, e_loss: 0.0062
+2024-01-08 23:50:56,950 INFO step: 1300/2000, e_loss: 0.0051
+2024-01-08 23:52:25,475 INFO step: 1400/2000, e_loss: 0.005
+2024-01-08 23:53:53,930 INFO step: 1500/2000, e_loss: 0.0052
+2024-01-08 23:55:22,348 INFO step: 1600/2000, e_loss: 0.0034
+2024-01-08 23:56:50,665 INFO step: 1700/2000, e_loss: 0.0045
+2024-01-08 23:58:19,242 INFO step: 1800/2000, e_loss: 0.0035
+2024-01-08 23:59:47,805 INFO step: 1900/2000, e_loss: 0.006
+2024-01-09 00:01:15,600 INFO Finish Embedding Network Training
+2024-01-09 00:01:15,604 INFO Start Training with Supervised Loss Only
+2024-01-09 00:01:16,724 INFO step: 0/2000, s_loss: 0.1612
+2024-01-09 00:02:09,454 INFO step: 100/2000, s_loss: 0.0413
+2024-01-09 00:03:02,268 INFO step: 200/2000, s_loss: 0.0403
+2024-01-09 00:03:55,186 INFO step: 300/2000, s_loss: 0.039
+2024-01-09 00:04:47,915 INFO step: 400/2000, s_loss: 0.0362
+2024-01-09 00:05:40,569 INFO step: 500/2000, s_loss: 0.0323
+2024-01-09 00:06:33,619 INFO step: 600/2000, s_loss: 0.0298
+2024-01-09 00:07:26,464 INFO step: 700/2000, s_loss: 0.0264
+2024-01-09 00:08:19,086 INFO step: 800/2000, s_loss: 0.0256
+2024-01-09 00:09:11,767 INFO step: 900/2000, s_loss: 0.0253
+2024-01-09 00:10:04,447 INFO step: 1000/2000, s_loss: 0.0255
+2024-01-09 00:10:57,215 INFO step: 1100/2000, s_loss: 0.025
+2024-01-09 00:11:49,842 INFO step: 1200/2000, s_loss: 0.0246
+2024-01-09 00:12:42,197 INFO step: 1300/2000, s_loss: 0.0249
+2024-01-09 00:13:34,920 INFO step: 1400/2000, s_loss: 0.0248
+2024-01-09 00:14:27,663 INFO step: 1500/2000, s_loss: 0.0247
+2024-01-09 00:15:20,326 INFO step: 1600/2000, s_loss: 0.0245
+2024-01-09 00:16:13,014 INFO step: 1700/2000, s_loss: 0.0244
+2024-01-09 00:17:05,717 INFO step: 1800/2000, s_loss: 0.0245
+2024-01-09 00:17:58,424 INFO step: 1900/2000, s_loss: 0.0243
+2024-01-09 00:18:50,820 INFO Finish Training with Supervised Loss Only
+2024-01-09 00:19:07,203 INFO step: 0/2000, d_loss: 2.1611, g_loss_u: 0.6666, g_loss_s: 0.0724, g_loss_v: 0.1455, e_loss_t0: 0.0572
+2024-01-09 00:36:21,743 INFO step: 100/2000, d_loss: 1.917, g_loss_u: 1.065, g_loss_s: 0.025, g_loss_v: 0.0397, e_loss_t0: 0.0038
+2024-01-09 00:53:44,041 INFO step: 200/2000, d_loss: 2.0026, g_loss_u: 1.0328, g_loss_s: 0.0257, g_loss_v: 0.0365, e_loss_t0: 0.0027
+2024-01-09 01:11:05,277 INFO step: 300/2000, d_loss: 1.8619, g_loss_u: 1.0327, g_loss_s: 0.0262, g_loss_v: 0.0379, e_loss_t0: 0.0029
+2024-01-09 01:28:24,636 INFO step: 400/2000, d_loss: 1.8249, g_loss_u: 1.0716, g_loss_s: 0.0253, g_loss_v: 0.0354, e_loss_t0: 0.0036
+2024-01-09 01:45:45,457 INFO step: 500/2000, d_loss: 1.8281, g_loss_u: 0.933, g_loss_s: 0.0258, g_loss_v: 0.0438, e_loss_t0: 0.0024
+2024-01-09 02:03:01,314 INFO step: 600/2000, d_loss: 1.8578, g_loss_u: 0.9721, g_loss_s: 0.025, g_loss_v: 0.0343, e_loss_t0: 0.0021
+2024-01-09 02:20:14,591 INFO step: 700/2000, d_loss: 1.906, g_loss_u: 1.0722, g_loss_s: 0.0249, g_loss_v: 0.0356, e_loss_t0: 0.0027
+2024-01-09 02:37:26,340 INFO step: 800/2000, d_loss: 1.9464, g_loss_u: 0.8875, g_loss_s: 0.0267, g_loss_v: 0.0352, e_loss_t0: 0.0037
+2024-01-09 02:54:42,570 INFO step: 900/2000, d_loss: 1.8639, g_loss_u: 1.0616, g_loss_s: 0.0251, g_loss_v: 0.0366, e_loss_t0: 0.0032
+2024-01-09 03:11:58,160 INFO step: 1000/2000, d_loss: 1.8369, g_loss_u: 1.0733, g_loss_s: 0.0265, g_loss_v: 0.0358, e_loss_t0: 0.0052
+2024-01-09 03:29:16,458 INFO step: 1100/2000, d_loss: 1.9075, g_loss_u: 1.0483, g_loss_s: 0.0254, g_loss_v: 0.0355, e_loss_t0: 0.0031
+2024-01-09 03:46:33,449 INFO step: 1200/2000, d_loss: 1.9595, g_loss_u: 0.9916, g_loss_s: 0.0256, g_loss_v: 0.0365, e_loss_t0: 0.0022
+2024-01-09 04:03:52,558 INFO step: 1300/2000, d_loss: 1.9266, g_loss_u: 1.1058, g_loss_s: 0.0251, g_loss_v: 0.0379, e_loss_t0: 0.0024
+2024-01-09 04:21:11,126 INFO step: 1400/2000, d_loss: 1.9766, g_loss_u: 1.2001, g_loss_s: 0.0256, g_loss_v: 0.0365, e_loss_t0: 0.0024
+2024-01-09 04:38:30,693 INFO step: 1500/2000, d_loss: 1.8986, g_loss_u: 1.0977, g_loss_s: 0.0252, g_loss_v: 0.033, e_loss_t0: 0.003
+2024-01-09 04:55:46,635 INFO step: 1600/2000, d_loss: 1.8805, g_loss_u: 1.183, g_loss_s: 0.0251, g_loss_v: 0.0373, e_loss_t0: 0.0021
+2024-01-09 05:13:02,586 INFO step: 1700/2000, d_loss: 1.9003, g_loss_u: 1.0923, g_loss_s: 0.0254, g_loss_v: 0.0381, e_loss_t0: 0.0033
+2024-01-09 05:30:19,481 INFO step: 1800/2000, d_loss: 1.8769, g_loss_u: 1.1195, g_loss_s: 0.0253, g_loss_v: 0.0371, e_loss_t0: 0.0026
+2024-01-09 05:47:39,353 INFO step: 1900/2000, d_loss: 1.929, g_loss_u: 1.0842, g_loss_s: 0.0254, g_loss_v: 0.0335, e_loss_t0: 0.0018
+2024-01-09 06:04:46,084 INFO Finish Joint Training
+2024-01-09 06:04:46,888 INFO after training
+2024-01-09 06:04:49,835 INFO Finish Synthetic Data Generation
+2024-01-09 06:04:51.175807: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:0b:00.0
+2024-01-09 06:04:51.241319: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-09 06:04:51.243676: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-09 06:04:51.244404: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-09 06:04:51.246017: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-09 06:04:51.248010: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-09 06:04:51.249527: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-09 06:04:51.251238: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-09 06:04:51.254776: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-09 06:04:51.259910: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-09 06:04:51.260369: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2024-01-09 06:04:51.261275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2024-01-09 06:04:51.263714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:0b:00.0, compute capability: 7.0)
+2024-01-09 06:16:46.785276: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla V100-SXM2-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.53
+pciBusID: 0000:0b:00.0
+2024-01-09 06:16:46.789295: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2024-01-09 06:16:46.789388: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2024-01-09 06:16:46.789465: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2024-01-09 06:16:46.789525: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2024-01-09 06:16:46.789581: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2024-01-09 06:16:46.789637: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2024-01-09 06:16:46.789698: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2024-01-09 06:16:46.790704: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2024-01-09 06:16:46.790811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-09 06:16:46.790855: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 
+2024-01-09 06:16:46.790894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N 
+2024-01-09 06:16:46.791895: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30581 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:0b:00.0, compute capability: 7.0)
+2024-01-09 06:32:05,241 INFO PCA plot saved to: plots/20240109_063205_PCA_plot.png
+2024-01-09 06:32:49,595 INFO t-SNE plot saved to: plots/20240109_063249_t-SNE_plot.png
+2024-01-09 06:32:49,792 INFO {'discriminative': 0.0, 'predictive': 0.067086812364324}
+[t-SNE] Computing 16 nearest neighbors...
+[t-SNE] Indexed 2000 samples in 0.000s...
+[t-SNE] Computed neighbors for 2000 samples in 0.123s...
+[t-SNE] Computed conditional probabilities for sample 1000 / 2000
+[t-SNE] Computed conditional probabilities for sample 2000 / 2000
+[t-SNE] Mean sigma: 0.211988
+[t-SNE] KL divergence after 250 iterations with early exaggeration: 104.801727
+[t-SNE] KL divergence after 5000 iterations: 1.923526

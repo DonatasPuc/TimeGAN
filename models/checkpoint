@@ -1,6 +1,0 @@
-model_checkpoint_path: "timegan_joint-400"
-all_model_checkpoint_paths: "timegan_joint-600"
-all_model_checkpoint_paths: "timegan_joint-700"
-all_model_checkpoint_paths: "timegan_joint-800"
-all_model_checkpoint_paths: "timegan_joint-900"
-all_model_checkpoint_paths: "timegan_joint-1000"
