@@ -1,0 +1,7 @@
+model_checkpoint_path: "timegan_embedding-2500"
+all_model_checkpoint_paths: "timegan_embedding-0"
+all_model_checkpoint_paths: "timegan_embedding-500"
+all_model_checkpoint_paths: "timegan_embedding-1000"
+all_model_checkpoint_paths: "timegan_embedding-1500"
+all_model_checkpoint_paths: "timegan_embedding-2000"
+all_model_checkpoint_paths: "timegan_embedding-2500"

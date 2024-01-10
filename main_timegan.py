@@ -95,7 +95,7 @@ def main (args):
   do_training = args.do_training == 'yes'
   do_metrics = args.do_metrics == 'yes'
       
-  generated_data = timegan(ori_data, parameters, args.model_dir, args.model_dir, 100, do_training)
+  generated_data = timegan(ori_data, parameters, args.model_dir, args.model_dir, 250, do_training)
   logging.info('Finish Synthetic Data Generation')
 
   save_ndarray_to_mat(generated_data, f'feat3_25prc_75_3000_synth_{datetime.now().strftime("%Y%m%d_%H%M%S")}')

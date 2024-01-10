@@ -30,16 +30,16 @@ ori_data   = dl.real_data_loading("gear_signals", seq_len, base_path="data", per
 parameters = dict()
 
 parameters['module'] = 'gru' 
-parameters['hidden_dim'] = 24
-parameters['num_layer'] = 3
-parameters['iterations'] = 1000
+parameters['hidden_dim'] = 48
+parameters['num_layer'] = 6
+parameters['iterations'] = 3000
 parameters['batch_size'] = 128
 parameters['data_name'] = 'gear_signals'
 parameters['dataset_percentage'] = percentage
 parameters['seq_len'] = seq_len
 parameters['feature_number'] = 'Feat3'
 parameters['do_training'] = False
-parameters['model_dir'] = 'models_feat3_0109_2117_seq_32'
+parameters['model_dir'] = 'models_feat3_gru_6dim_48lay'
 
 synth_data = timegan(ori_data, parameters, parameters['model_dir'], parameters['model_dir'], 100, parameters['do_training'])
 
@@ -48,5 +48,5 @@ dl.save_ndarray_to_mat(dl.reconstruct_data(np.asarray(synth_data), seq_len), sav
 dl.save_ndarray_to_mat(synth_data, save_file + '_multi')
 
 
-# visualization(ori_data, synth_data, 'pca', plot_synthetic=True)
-# visualization(ori_data, synth_data, 'tsne', plot_synthetic=True)
+visualization(ori_data, synth_data, 'pca', plot_synthetic=True)
+visualization(ori_data, synth_data, 'tsne', plot_synthetic=True)
